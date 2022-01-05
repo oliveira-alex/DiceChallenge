@@ -10,12 +10,14 @@ import SwiftUI
 struct DiceView: View {
     @State private var rolledNumber: Int = 0
     private var diceFace: String {
-        if rolledNumber == 0 {
+        if results.rolled.isEmpty {
             return "square"
         } else {
-            return "die.face.\(rolledNumber)"
+            return "die.face.\(results.rolled.last!.rolledNumber)"
         }
     }
+    
+    @EnvironmentObject var results: Results
     
     var body: some View {
         NavigationView {
@@ -37,17 +39,15 @@ struct DiceView: View {
     }
     
     func rollDice() {
-        var newNumber: Int
-        repeat {
-            newNumber = Int.random(in: 1...6)
-        } while (newNumber == rolledNumber)
-        rolledNumber = newNumber
+        rolledNumber = Int.random(in: 1...6)
+        results.append(rolledNumber)
     }
 }
 
 struct DiceView_Previews: PreviewProvider {
     static var previews: some View {
         DiceView()
+            .environmentObject(Results([1, 6, 2, 4, 3, 1, 5, 1, 6]))
 //            .preferredColorScheme(.dark)
     }
 }

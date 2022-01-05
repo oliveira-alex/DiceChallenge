@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    var results = Results()
+    
     var body: some View {
         TabView {
             DiceView()
@@ -16,12 +18,13 @@ struct ContentView: View {
                     Text("Dice")
                 }
             
-            Text("Results View")
+            ResultsView()
                 .tabItem {
                     Image(systemName: "list.bullet.rectangle.portrait")
                     Text("Results")
                 }
         }
+        .environmentObject(results)
     }
 }
 

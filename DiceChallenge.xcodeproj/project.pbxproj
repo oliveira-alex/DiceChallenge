@@ -12,6 +12,8 @@
 		E79F19F9278604EA00292BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F19F8278604EA00292BD9 /* Assets.xcassets */; };
 		E79F19FC278604EA00292BD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F19FB278604EA00292BD9 /* Preview Assets.xcassets */; };
 		E79F1A032786069400292BD9 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A022786069400292BD9 /* DiceView.swift */; };
+		E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A0427861F5100292BD9 /* ResultsView.swift */; };
+		E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A06278628E000292BD9 /* ResultsClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		E79F19F8278604EA00292BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E79F19FB278604EA00292BD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E79F1A022786069400292BD9 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
+		E79F1A0427861F5100292BD9 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		E79F1A06278628E000292BD9 /* ResultsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			children = (
 				E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */,
 				E79F19F6278604E800292BD9 /* ContentView.swift */,
+				E79F1A06278628E000292BD9 /* ResultsClass.swift */,
 				E79F1A022786069400292BD9 /* DiceView.swift */,
+				E79F1A0427861F5100292BD9 /* ResultsView.swift */,
 				E79F19F8278604EA00292BD9 /* Assets.xcassets */,
 				E79F19FA278604EA00292BD9 /* Preview Content */,
 			);
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79F19F7278604E800292BD9 /* ContentView.swift in Sources */,
+				E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */,
+				E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */,
 				E79F1A032786069400292BD9 /* DiceView.swift in Sources */,
 				E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */,
 			);
