@@ -25,14 +25,18 @@ struct DiceView: View {
                 Image(systemName: diceFace)
                     .resizable()
                     .frame(width: 200, height: 200)
-                    .padding([.bottom], 70)
-
-                Button("Roll Dice") { rollDice() }
-                    .padding(8)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.accentColor)
-                    )
+                    .padding([.bottom], 135)
+                
+                Button(action: { rollDice() }) {
+                    Text("Roll Dice")
+                        .font(.title2)
+                        .padding(25)
+                        .background(
+                            Capsule()
+                                .stroke(Color.accentColor, lineWidth: 1.5)
+                        )
+                }
+                .padding(.bottom)
             }
             .navigationTitle("Dice Simulator")
         }

@@ -24,7 +24,20 @@ struct ResultsView: View {
             }
             .navigationTitle("Previously Rolled")
             .toolbar {
-                Button("Clear") { results.rolled = [] }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: { results.rolled = [] }) {
+                        Text("Clear")
+                            .padding([.vertical], 3)
+                            .padding([.horizontal], 11)
+                            .background(
+                                HStack {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.accentColor)
+                                }
+                            )
+                    }
+                    .disabled(results.rolled.isEmpty)
+                }
             }
         }
     }
