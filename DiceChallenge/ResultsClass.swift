@@ -7,29 +7,26 @@
 
 import SwiftUI
 
-class Result: Identifiable {
-    var id = UUID()
-    var rolledNumber: Int
-    
-    init(_ number: Int) {
-        rolledNumber = number
-    }
-}
-
 class Results: ObservableObject {
-    @Published var rolled: [Result] = []
+    static let example = Results([1, 6, 2, 4, 3, 1, 5, 1, 6])
+    
+    @Published private var rolled: [Int] = []
+    var isEmpty: Bool { return rolled.isEmpty }
+    var all: [Int] { return rolled }
     
     init() { }
     
     convenience init(_ numbers: [Int]) {
         self.init()
         
-        for number in numbers {
-            self.rolled.append(Result(number))
-        }
+        self.rolled += numbers
     }
     
     func append(_ number: Int) {
-        rolled.append(Result(number))
+        rolled.append(number)
+    }
+    
+    func removeAllResults() {
+        rolled = []
     }
 }

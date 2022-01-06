@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct DiceView: View {
+    @EnvironmentObject var results: Results
     @State private var rolledNumber: Int = 0
     private var diceFace: String {
-        if results.rolled.isEmpty {
+        if results.isEmpty {
             return "square"
         } else {
-            return "die.face.\(results.rolled.last!.rolledNumber)"
+            return "die.face.\(results.all.last!)"
         }
     }
-    
-    @EnvironmentObject var results: Results
     
     var body: some View {
         NavigationView {
@@ -51,7 +50,7 @@ struct DiceView: View {
 struct DiceView_Previews: PreviewProvider {
     static var previews: some View {
         DiceView()
-            .environmentObject(Results([1, 6, 2, 4, 3, 1, 5, 1, 6]))
+            .environmentObject(Results.example)
 //            .preferredColorScheme(.dark)
     }
 }

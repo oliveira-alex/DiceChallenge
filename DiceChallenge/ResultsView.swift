@@ -13,19 +13,17 @@ struct ResultsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(results.rolled) { result in
-                    let index = results.rolled.firstIndex(where: { $0.id == result.id })!
-                    
+                ForEach(Array(results.all.enumerated()), id: \.offset) { index, rolledNumber in
                     HStack {
                         Text("\(index + 1). ")
-                        Image(systemName: "die.face.\(result.rolledNumber)")
+                        Image(systemName: "die.face.\(rolledNumber)")
                     }
                 }
             }
             .navigationTitle("Previously Rolled")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action: { results.rolled = [] }) {
+                    Button(action: { results.removeAllResults() }) {
                         Text("Clear")
                             .padding([.vertical], 3)
                             .padding([.horizontal], 11)
@@ -36,7 +34,7 @@ struct ResultsView: View {
                                 }
                             )
                     }
-                    .disabled(results.rolled.isEmpty)
+                    .disabled(results.isEmpty)
                 }
             }
         }
@@ -46,6 +44,6 @@ struct ResultsView: View {
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsView()
-            .environmentObject(Results([1, 6, 2, 4, 3, 1, 5, 1, 6]))
+            .environmentObject(Results.example)
     }
 }
