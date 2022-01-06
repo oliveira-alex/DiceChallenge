@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            DiceView()
+            DicesView()
                 .tabItem {
                     Image(systemName: "dice")
                     Text("Dice")
@@ -30,6 +30,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(results: Results.example)
     }
 }

@@ -23,7 +23,7 @@ struct ResultsView: View {
             .navigationTitle("Previously Rolled")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action: { results.removeAllResults() }) {
+                    Button(action: results.removeAll) {
                         Text("Clear")
                             .padding([.vertical], 3)
                             .padding([.horizontal], 11)
@@ -38,6 +38,7 @@ struct ResultsView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

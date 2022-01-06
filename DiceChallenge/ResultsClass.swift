@@ -26,7 +26,7 @@ class Results: ObservableObject {
         rolled.append(number)
     }
     
-    func removeAllResults() {
+    func removeAll() {
         rolled = []
     }
 }
