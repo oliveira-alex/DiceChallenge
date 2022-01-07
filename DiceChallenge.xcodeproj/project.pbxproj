@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AB27879EF600C5B1EF /* SettingsView.swift */; };
+		E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AD2787AEA500C5B1EF /* CustomButton.swift */; };
 		E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */; };
 		E79F19F7278604E800292BD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F6278604E800292BD9 /* ContentView.swift */; };
 		E79F19F9278604EA00292BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F19F8278604EA00292BD9 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72D52AB27879EF600C5B1EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E72D52AD2787AEA500C5B1EF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E79F19F1278604E800292BD9 /* DiceChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceChallengeApp.swift; sourceTree = "<group>"; };
 		E79F19F6278604E800292BD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,11 +61,13 @@
 		E79F19F3278604E800292BD9 /* DiceChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				E72D52AB27879EF600C5B1EF /* SettingsView.swift */,
 				E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */,
 				E79F19F6278604E800292BD9 /* ContentView.swift */,
-				E79F1A06278628E000292BD9 /* ResultsClass.swift */,
 				E79F1A022786069400292BD9 /* DicesView.swift */,
 				E79F1A0427861F5100292BD9 /* ResultsView.swift */,
+				E79F1A06278628E000292BD9 /* ResultsClass.swift */,
+				E72D52AD2787AEA500C5B1EF /* CustomButton.swift */,
 				E79F19F8278604EA00292BD9 /* Assets.xcassets */,
 				E79F19FA278604EA00292BD9 /* Preview Content */,
 			);
@@ -149,6 +155,8 @@
 				E79F19F7278604E800292BD9 /* ContentView.swift in Sources */,
 				E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */,
 				E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */,
+				E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */,
+				E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */,
 				E79F1A032786069400292BD9 /* DicesView.swift in Sources */,
 				E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */,
 			);

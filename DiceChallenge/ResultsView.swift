@@ -13,29 +13,28 @@ struct ResultsView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(Array(results.all.enumerated()), id: \.offset) { index, rolledNumber in
+                ForEach(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
                     HStack {
-                        Text("\(index + 1). ")
-                        Image(systemName: "die.face.\(rolledNumber)")
+                        Text("\(resultIndex + 1). ")
+                        
+                        ForEach(Array(result.enumerated()), id: \.offset) { diceIndex, diceFaceNumber in
+                            if diceIndex == 0 {
+                                Image(systemName: "die.face.\(diceFaceNumber)")
+                            } else {
+                                Text("+")
+                                Image(systemName: "die.face.\(diceFaceNumber)")
+                            }
+                        }
+                        
+                        let total = result.reduce(0, +)
+                        Text("= \(total)")
                     }
                 }
             }
             .navigationTitle("Previously Rolled")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action: results.removeAll) {
-                        Text("Clear")
-                            .padding([.vertical], 3)
-                            .padding([.horizontal], 11)
-                            .background(
-                                HStack {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.accentColor)
-                                }
-                            )
-                    }
+                CustomToolbarButton(title: "Clear", action: results.removeAll)
                     .disabled(results.isEmpty)
-                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
