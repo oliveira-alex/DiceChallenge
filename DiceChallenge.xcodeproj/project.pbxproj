@@ -16,6 +16,7 @@
 		E79F1A032786069400292BD9 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A022786069400292BD9 /* DicesView.swift */; };
 		E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A0427861F5100292BD9 /* ResultsView.swift */; };
 		E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A06278628E000292BD9 /* ResultsClass.swift */; };
+		E7F48BB4278B142D00816112 /* DiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F48BB3278B142D00816112 /* DiceClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		E79F1A022786069400292BD9 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
 		E79F1A0427861F5100292BD9 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		E79F1A06278628E000292BD9 /* ResultsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsClass.swift; sourceTree = "<group>"; };
+		E7F48BB3278B142D00816112 /* DiceClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				E79F19F6278604E800292BD9 /* ContentView.swift */,
 				E79F1A022786069400292BD9 /* DicesView.swift */,
 				E79F1A0427861F5100292BD9 /* ResultsView.swift */,
+				E7F48BB3278B142D00816112 /* DiceClass.swift */,
 				E79F1A06278628E000292BD9 /* ResultsClass.swift */,
 				E72D52AD2787AEA500C5B1EF /* CustomButton.swift */,
 				E79F19F8278604EA00292BD9 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 				E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */,
 				E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */,
 				E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */,
+				E7F48BB4278B142D00816112 /* DiceClass.swift in Sources */,
 				E79F1A032786069400292BD9 /* DicesView.swift in Sources */,
 				E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */,
 			);

@@ -9,15 +9,16 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var numberOfDices: Int
-    @State private var pickerIndex = 0
+    @EnvironmentObject var dices: Dices
+    @State private var newNumberOfDices = 0
+    @State private var newNumberOfDiceFaces = 6
     
     var body: some View {
         NavigationView {
             Form {
                 HStack {
                     Text("Quantity")
-                    Picker("Number of dices", selection: $pickerIndex) {
+                    Picker("Number of dices", selection: $newNumberOfDices) {
                         ForEach(1..<5) { number in
                             switch number {
                             case 1:
@@ -30,17 +31,29 @@ struct SettingsView: View {
                     .pickerStyle(.wheel)
                 }
             }
-            .onAppear(perform: { pickerIndex = numberOfDices })
+            .onAppear(perform: { newNumberOfDices = dices.count })
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    CustomToolbarButton(title: "Cancel") { presentationMode.wrappedValue.dismiss()
+                    CustomToolbarButton(title: "Cancel"){
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    CustomToolbarButton(title: "Apply") { presentationMode.wrappedValue.dismiss()
-                        numberOfDices = pickerIndex
+                    CustomToolbarButton(title: "Apply") {
+                        if newNumberOfDices > dices.count {
+                            repeat {
+                                dices.addOneDice()
+                            } while newNumberOfDices > dices.count
+                        } else if newNumberOfDices < dices.count {
+                            repeat {
+                                dices.removeOneDice()
+                            } while newNumberOfDices < dices.count
+                        }
+                        
+                        dices.resetAll()
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }
@@ -51,6 +64,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(numberOfDices: .constant(3))
+        SettingsView()
+            .environmentObject(Dices())
     }
 }

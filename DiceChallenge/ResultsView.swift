@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ResultsView: View {
+    @EnvironmentObject var dices: Dices
     @EnvironmentObject var results: Results
     
     var body: some View {
@@ -17,24 +18,22 @@ struct ResultsView: View {
                     HStack {
                         Text("\(resultIndex + 1). ")
                         
-                        ForEach(Array(result.enumerated()), id: \.offset) { diceIndex, diceFaceNumber in
-                            if diceIndex == 0 {
-                                Image(systemName: "die.face.\(diceFaceNumber)")
-                            } else {
-                                Text("+")
-                                Image(systemName: "die.face.\(diceFaceNumber)")
-                            }
+                        ForEach(Array(result.faceUpImages.enumerated()), id: \.offset) { diceIndex, faceUpImage in
+                            if diceIndex != 0 { Text("+") }
+                            faceUpImage
                         }
                         
-                        let total = result.reduce(0, +)
-                        Text("= \(total)")
+                        Text("= \(result.total)")
                     }
                 }
             }
             .navigationTitle("Previously Rolled")
             .toolbar {
-                CustomToolbarButton(title: "Clear", action: results.removeAll)
-                    .disabled(results.isEmpty)
+                CustomToolbarButton(title: "Clear") {
+                    results.removeAll()
+                    dices.resetAll()
+                }
+                .disabled(results.isEmpty)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -44,6 +43,7 @@ struct ResultsView: View {
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsView()
+            .environmentObject(Dices())
             .environmentObject(Results.example)
     }
 }

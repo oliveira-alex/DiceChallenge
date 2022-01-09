@@ -8,40 +8,13 @@
 import SwiftUI
 
 struct DicesView: View {
-    @EnvironmentObject var results: Results
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var dices: Dices
+    @EnvironmentObject var results: Results
+
     @State private var isShowingSettings = false
-    @State private var numberOfDices = 1
-    @State private var rolledNumbers: [Int] = []
-    var totalRolled: Int? {
-        if newSettings {
-            return nil
-        } else {
-            var total = 0
-            for diceNumber in 0..<numberOfDices {
-                total += results.all.last![diceNumber]
-            }
-            
-            return total
-        }
-    }
-    private var newSettings: Bool {
-        results.isEmpty || (results.all.last!.count != numberOfDices)
-    }
-    private var diceFaces: [String] {
-        var faces: [String] = []
-        if newSettings {
-            for _ in 0..<numberOfDices {
-                faces.append("square")
-            }
-        } else {
-            for faceNumber in results.all.last! {
-                faces.append("die.face.\(faceNumber)")
-            }
-        }
-        
-        return faces
-    }
+
+    private var currentResult: Result { Result(from: dices) }
     
     var body: some View {
         GeometryReader { geometry in
@@ -51,7 +24,7 @@ struct DicesView: View {
                 VStack {
                     Spacer(minLength: 40)
                     
-                    Text(newSettings ? "Total" : "\(totalRolled!)")
+                    Text(currentResult.total)
                         .font(.largeTitle)
                         .background(
                             Circle()
@@ -64,27 +37,27 @@ struct DicesView: View {
                     
                     VStack {
                         HStack {
-                            Image(systemName: diceFaces[0])
+                            dices.all[0].faceUpImage
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
 
-                            if numberOfDices > 1 {
-                                Image(systemName: diceFaces[1])
+                            if dices.count > 1 {
+                                dices.all[1].faceUpImage
                                     .resizable()
                                     .aspectRatio(1, contentMode: .fit)
                             }
                         }
 
-                        if numberOfDices > 1 {
+                        if dices.count > 1 {
                             HStack {
-                                if numberOfDices > 2 {
-                                Image(systemName: diceFaces[2])
+                                if dices.count > 2 {
+                                    dices.all[2].faceUpImage
                                     .resizable()
                                     .aspectRatio(1, contentMode: .fit)
                                 }
                                 
-                                if numberOfDices > 3 {
-                                    Image(systemName: diceFaces[3])
+                                if dices.count > 3 {
+                                    dices.all[3].faceUpImage
                                         .resizable()
                                         .aspectRatio(1, contentMode: .fit)
                                 }
@@ -97,8 +70,8 @@ struct DicesView: View {
                     
                     Spacer(minLength: 50)
 
-                    Button(action: { rollDices() }) {
-                        Text(numberOfDices == 1 ? "Roll Dice" : "Roll Dices")
+                    Button(action: rollDices) {
+                        Text(dices.count > 1 ? "Roll Dices" : "Roll Dice")
                             .font(.title2)
                             .background(
                                 Capsule()
@@ -112,11 +85,12 @@ struct DicesView: View {
                 .navigationTitle("Dice Simulator")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
-                        CustomToolbarButton(title: "Settings", action: showSettingsSheet)
+                        CustomToolbarButton(title: "Settings", action: { isShowingSettings.toggle() })
                     }
                 }
                 .sheet(isPresented: $isShowingSettings) {
-                    SettingsView(numberOfDices: $numberOfDices)
+                    SettingsView()
+                        .environmentObject(dices)
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -124,21 +98,17 @@ struct DicesView: View {
     }
     
     func rollDices() {
-        rolledNumbers = []
-        for _ in 0..<numberOfDices {
-            rolledNumbers.append(Int.random(in: 1...6))
-        }
+        dices.rollAll()
         
-        results.append(rolledNumbers)
+        results.append(currentResult)
     }
-    
-    func showSettingsSheet() { isShowingSettings.toggle() }
 }
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
         DicesView()
-            .environmentObject(Results.example)
+            .environmentObject(Dices())
+            .environmentObject(Results())
 //            .preferredColorScheme(.dark)
     }
 }

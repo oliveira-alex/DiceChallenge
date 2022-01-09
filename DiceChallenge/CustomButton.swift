@@ -14,8 +14,7 @@ struct CustomToolbarButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .padding(.vertical, 3)
-                .padding(.horizontal, 11)
+                .frame(width: 100, height: 35)
                 .background(
                     HStack {
                         RoundedRectangle(cornerRadius: 8)
