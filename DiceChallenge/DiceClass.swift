@@ -8,9 +8,13 @@
 import SwiftUI
 
 class Dice: Identifiable {
+    static let example = Dice(numberOfFaces: defaultNumberOfFaces, faceUpValue: 5)
+    
+    static let defaultNumberOfFaces = 6
+    static let possibleNumberOfFaces = [4, 6, 8, 10, 12, 20]
     var id = UUID()
-    var numberOfFaces = 6
-    var faceUpValue = 0
+    var numberOfFaces: Int
+    var faceUpValue: Int
     var faceUpImage: Image {
         if faceUpValue == 0 {
             return Image(systemName: "square")
@@ -20,28 +24,20 @@ class Dice: Identifiable {
             return Image(systemName: "\(faceUpValue).square")
         }
     }
-    
-    init() { }
-    
-    convenience init(faceUpValue: Int) {
-        self.init()
-        
+
+    init(numberOfFaces: Int, faceUpValue: Int) {
+        self.numberOfFaces = numberOfFaces
         self.faceUpValue = faceUpValue
     }
     
     convenience init(numberOfFaces: Int) {
-        self.init()
-        
-        self.numberOfFaces = numberOfFaces
+        self.init(numberOfFaces: numberOfFaces, faceUpValue: 0)
     }
     
-    convenience init(numberOfFaces: Int, faceUpValue: Int) {
-        self.init()
-        
-        self.numberOfFaces = numberOfFaces
-        self.faceUpValue = faceUpValue
+    convenience init() {
+        self.init(numberOfFaces: Dice.defaultNumberOfFaces, faceUpValue: 0)
     }
-    
+
     func roll() {
         faceUpValue = Int.random(in: 1...numberOfFaces)
     }
@@ -52,17 +48,42 @@ class Dice: Identifiable {
 }
 
 class Dices: ObservableObject {
-    @Published private var dices = [Dice()]
-    var first: Dice { return dices.first! }
+    static let example = Dices(dices: [.example])
+    static let singleDice = Dices(dices: [Dice()])
+    
+    @Published private var dices: [Dice]
     var all: [Dice] { return dices }
     var count: Int { return dices.count }
+    var numberOfFaces: Int {
+        if dices.isEmpty {
+            return Dice.defaultNumberOfFaces
+        } else {
+            return dices.first!.numberOfFaces
+        }
+    }
+
+    init(dices: [Dice]) {
+        self.dices = dices
+    }
     
-    func addOneDice() {
-        dices.append(Dice())
+    convenience init() {
+        self.init(dices: [])
+    }
+
+    func addOneDice(numberOfFaces: Int) {
+        dices.append(Dice(numberOfFaces: numberOfFaces))
     }
     
     func removeOneDice() {
+        guard dices.count > 0 else { return }
+        
         let _ = dices.popLast()
+    }
+    
+    func removeAllDices() {
+        for _ in dices {
+            removeOneDice()
+        }
     }
     
     func rollAll() {

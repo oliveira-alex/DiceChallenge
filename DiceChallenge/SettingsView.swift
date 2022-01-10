@@ -14,57 +14,88 @@ struct SettingsView: View {
     @State private var newNumberOfDiceFaces = 6
     
     var body: some View {
-        NavigationView {
-            Form {
-                HStack {
-                    Text("Quantity")
-                    Picker("Number of dices", selection: $newNumberOfDices) {
-                        ForEach(1..<5) { number in
-                            switch number {
-                            case 1:
-                                Text("\(number) dice").tag(number)
-                            default:
-                                Text("\(number) dices").tag(number)
+        GeometryReader { geometry in
+            let screenWidth = geometry.size.width
+            
+            NavigationView {
+                Form {
+                    Section("Quantity") {
+                        Picker("Number of dices", selection: $newNumberOfDices) {
+                            ForEach(1..<5) { numberOfDices in
+                                switch numberOfDices {
+                                case 1:
+                                    Text("\(numberOfDices) dice").tag(numberOfDices)
+                                default:
+                                    Text("\(numberOfDices) dices").tag(numberOfDices)
+                                }
                             }
                         }
+                        .pickerStyle(.wheel)
+                        .frame(width: 0.82*screenWidth)
                     }
-                    .pickerStyle(.wheel)
-                }
-            }
-            .onAppear(perform: { newNumberOfDices = dices.count })
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    CustomToolbarButton(title: "Cancel"){
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    CustomToolbarButton(title: "Apply") {
-                        if newNumberOfDices > dices.count {
-                            repeat {
-                                dices.addOneDice()
-                            } while newNumberOfDices > dices.count
-                        } else if newNumberOfDices < dices.count {
-                            repeat {
-                                dices.removeOneDice()
-                            } while newNumberOfDices < dices.count
+                    
+                    Section("Type") {
+                        Picker("Number of dices", selection: $newNumberOfDiceFaces) {
+                            ForEach(Dice.possibleNumberOfFaces, id: \.self) { numberOfFaces in
+                                switch newNumberOfDices {
+                                case 1:
+                                    Text("\(numberOfFaces) faces dice").tag(numberOfFaces)
+                                default:
+                                    Text("\(numberOfFaces) faces dices").tag(numberOfFaces)
+                                }
+                            }
                         }
-                        
-                        dices.resetAll()
-                        presentationMode.wrappedValue.dismiss()
+                        .pickerStyle(.wheel)
+                        .frame(width: 0.82*screenWidth)
+                    }
+                }
+                .onAppear(perform: {
+                    newNumberOfDices = dices.count
+                    newNumberOfDiceFaces = dices.numberOfFaces
+                })
+                .navigationTitle("Settings")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        CustomToolbarButton(title: "Cancel"){
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        CustomToolbarButton(title: "Apply") {
+                            if newNumberOfDiceFaces != dices.numberOfFaces {
+                                dices.removeAllDices()
+                                
+                                repeat {
+                                    dices.addOneDice(numberOfFaces: newNumberOfDiceFaces)
+                                } while newNumberOfDices > dices.count
+                            } else if newNumberOfDices > dices.count {
+                                repeat {
+                                    dices.addOneDice(numberOfFaces: newNumberOfDiceFaces)
+                                } while newNumberOfDices > dices.count
+                                
+                                dices.resetAll()
+                            } else if newNumberOfDices < dices.count {
+                                repeat {
+                                    dices.removeOneDice()
+                                } while newNumberOfDices < dices.count
+                                
+                                dices.resetAll()
+                            }
+                            
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(Dices())
+            .environmentObject(Dices.example)
     }
 }

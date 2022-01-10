@@ -37,7 +37,7 @@ struct Result: Identifiable {
     init() { }
     
     init(numberOfDices: Int) {
-        numberOfDiceFaces = 6
+        numberOfDiceFaces = Dice.possibleNumberOfFaces.randomElement()!
         
         faceUpValues = [Int].init(repeating: Int.random(in: 1...numberOfDiceFaces), count: numberOfDices)
         
@@ -45,7 +45,7 @@ struct Result: Identifiable {
     }
     
     init(from dices: Dices) {
-        numberOfDiceFaces = dices.first.numberOfFaces
+        numberOfDiceFaces = dices.numberOfFaces
         
         for dice in dices.all {
             if dice.faceUpValue != 0 {
@@ -56,26 +56,26 @@ struct Result: Identifiable {
 }
 
 class Results: ObservableObject {
-    static let example = Results([Result(numberOfDices: 1),
-                                  Result(numberOfDices: 2),
-                                  Result(numberOfDices: 1),
-                                  Result(numberOfDices: 3),
-                                  Result(numberOfDices: 4),
-                                  Result(numberOfDices: 2),
-                                  Result(numberOfDices: 3),
-                                  Result(numberOfDices: 1)])
+    static let example = Results(results: [Result(numberOfDices: 1),
+                                           Result(numberOfDices: 2),
+                                           Result(numberOfDices: 1),
+                                           Result(numberOfDices: 3),
+                                           Result(numberOfDices: 4),
+                                           Result(numberOfDices: 2),
+                                           Result(numberOfDices: 3),
+                                           Result(numberOfDices: 1)])
     
     @Published private var results: [Result] = []
     
     var isEmpty: Bool { return results.isEmpty }
     var all: [Result] { return results }
     
-    init() { }
+    init(results: [Result]) {
+        self.results = results
+    }
     
-    convenience init(_ results: [Result]) {
-        self.init()
-        
-        self.results += results
+    convenience init() {
+        self.init(results: [])
     }
     
     func append(_ result: Result) {

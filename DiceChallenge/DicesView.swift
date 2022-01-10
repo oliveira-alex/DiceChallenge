@@ -22,7 +22,7 @@ struct DicesView: View {
             
             NavigationView {
                 VStack {
-                    Spacer(minLength: 40)
+//                    Spacer(minLength: 40)
                     
                     Text(currentResult.total)
                         .font(.largeTitle)
@@ -82,10 +82,30 @@ struct DicesView: View {
                     
                     Spacer(minLength: 50)
                 }
-                .navigationTitle("Dice Simulator")
+//                .navigationTitle("Dice Simulator")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
-                        CustomToolbarButton(title: "Settings", action: { isShowingSettings.toggle() })
+                        Button(action: { isShowingSettings.toggle() }) {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 35, height: 35)
+                        }
+                        
+//                        CustomToolbarButton(title: "Settings", action: { isShowingSettings.toggle() })
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        let maxFaceValueSFSymbolName = (dices.numberOfFaces == 6) ? "die.face.6" : "\(dices.numberOfFaces).square"
+                        
+                        VStack(spacing: 0) {
+                            Image(systemName: maxFaceValueSFSymbolName)
+                                .resizable()
+                                .aspectRatio(1, contentMode: .fit)
+                            
+                            Text("max")
+                                .font(.system(size: 10))
+                        }
+                        .frame(width: 35, height: 35)
                     }
                 }
                 .sheet(isPresented: $isShowingSettings) {
@@ -107,8 +127,8 @@ struct DicesView: View {
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
         DicesView()
-            .environmentObject(Dices())
-            .environmentObject(Results())
+            .environmentObject(Dices.example)
+            .environmentObject(Results.example)
 //            .preferredColorScheme(.dark)
     }
 }

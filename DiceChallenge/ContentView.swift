@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var results = Results()
-    var dices = Dices()
+    var dices: Dices = .singleDice
     
     var body: some View {
         TabView {
@@ -32,6 +32,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(results: Results.example)
+        ContentView(results: .example, dices: .example)
     }
 }
