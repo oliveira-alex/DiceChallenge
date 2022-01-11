@@ -22,8 +22,6 @@ struct DicesView: View {
             
             NavigationView {
                 VStack {
-//                    Spacer(minLength: 40)
-                    
                     Text(currentResult.total)
                         .font(.largeTitle)
                         .background(
@@ -37,12 +35,12 @@ struct DicesView: View {
                     
                     VStack {
                         HStack {
-                            dices.all[0].faceUpImage
+                            Image(systemName: dices.all[0].faceUpImageSFSymbolName)
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
 
                             if dices.count > 1 {
-                                dices.all[1].faceUpImage
+                                Image(systemName: dices.all[1].faceUpImageSFSymbolName)
                                     .resizable()
                                     .aspectRatio(1, contentMode: .fit)
                             }
@@ -51,15 +49,15 @@ struct DicesView: View {
                         if dices.count > 1 {
                             HStack {
                                 if dices.count > 2 {
-                                    dices.all[2].faceUpImage
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
+                                    Image(systemName: dices.all[2].faceUpImageSFSymbolName)
+                                        .resizable()
+                                        .aspectRatio(1, contentMode: .fit)
                                 }
                                 
                                 if dices.count > 3 {
-                                    dices.all[3].faceUpImage
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fit)
+                                        Image(systemName: dices.all[3].faceUpImageSFSymbolName)
+                                            .resizable()
+                                            .aspectRatio(1, contentMode: .fit)
                                 }
                             }
                             .frame(maxWidth: screenWidth, maxHeight: (screenWidth - 2*20)/2)
@@ -71,7 +69,7 @@ struct DicesView: View {
                     Spacer(minLength: 50)
 
                     Button(action: rollDices) {
-                        Text(dices.count > 1 ? "Roll Dices" : "Roll Dice")
+                        Text(results.maxedOut ? "Maxed Out" : "Roll \(dices.diceOrDices)")
                             .font(.title2)
                             .background(
                                 Capsule()
@@ -79,10 +77,10 @@ struct DicesView: View {
                                     .frame(width: 150, height: 75)
                             )
                     }
+                    .disabled(results.maxedOut)
                     
                     Spacer(minLength: 50)
                 }
-//                .navigationTitle("Dice Simulator")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
                         Button(action: { isShowingSettings.toggle() }) {
@@ -90,15 +88,11 @@ struct DicesView: View {
                                 .resizable()
                                 .frame(width: 35, height: 35)
                         }
-                        
-//                        CustomToolbarButton(title: "Settings", action: { isShowingSettings.toggle() })
                     }
                     
                     ToolbarItem(placement: .navigationBarTrailing){
-                        let maxFaceValueSFSymbolName = (dices.numberOfFaces == 6) ? "die.face.6" : "\(dices.numberOfFaces).square"
-                        
                         VStack(spacing: 0) {
-                            Image(systemName: maxFaceValueSFSymbolName)
+                            Image(systemName: dices.maxFaceValueSFSymbolName)
                                 .resizable()
                                 .aspectRatio(1, contentMode: .fit)
                             

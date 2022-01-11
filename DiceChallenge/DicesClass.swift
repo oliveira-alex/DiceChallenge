@@ -1,11 +1,11 @@
 //
-//  DiceClass.swift
+//  DicesClass.swift
 //  DiceChallenge
 //
 //  Created by Alex Oliveira on 09/01/2022.
 //
 
-import SwiftUI
+import Foundation
 
 class Dice: Identifiable {
     static let example = Dice(numberOfFaces: defaultNumberOfFaces, faceUpValue: 5)
@@ -13,15 +13,15 @@ class Dice: Identifiable {
     static let defaultNumberOfFaces = 6
     static let possibleNumberOfFaces = [4, 6, 8, 10, 12, 20]
     var id = UUID()
-    var numberOfFaces: Int
+    let numberOfFaces: Int
     var faceUpValue: Int
-    var faceUpImage: Image {
+    var faceUpImageSFSymbolName: String {
         if faceUpValue == 0 {
-            return Image(systemName: "square")
+            return "square"
         } else if numberOfFaces == 6 {
-            return Image(systemName: "die.face.\(faceUpValue)")
+            return "die.face.\(faceUpValue)"
         } else {
-            return Image(systemName: "\(faceUpValue).square")
+            return "\(faceUpValue).square"
         }
     }
 
@@ -55,11 +55,13 @@ class Dices: ObservableObject {
     var all: [Dice] { return dices }
     var count: Int { return dices.count }
     var numberOfFaces: Int {
-        if dices.isEmpty {
-            return Dice.defaultNumberOfFaces
-        } else {
-            return dices.first!.numberOfFaces
-        }
+        return dices.first!.numberOfFaces
+    }
+    var diceOrDices: String {
+        return dices.count > 1 ? "Dices" : "Dice"
+    }
+    var maxFaceValueSFSymbolName: String {
+        return (numberOfFaces == 6) ? "die.face.6" : "\(numberOfFaces).square"
     }
 
     init(dices: [Dice]) {
@@ -80,10 +82,26 @@ class Dices: ObservableObject {
         let _ = dices.popLast()
     }
     
-    func removeAllDices() {
-        for _ in dices {
-            removeOneDice()
+    func getNewDices(numberOfFaces newNumberOfFaces: Int, numberOfDices newNumberOfDices: Int) {
+        dices.removeAll()
+        
+        repeat {
+            addOneDice(numberOfFaces: newNumberOfFaces)
+        } while dices.count < newNumberOfDices
+    }
+    
+    func setNumberOfDices(to newNumberOfDices: Int) {
+        if newNumberOfDices > dices.count {
+            repeat {
+                addOneDice(numberOfFaces: numberOfFaces)
+            } while newNumberOfDices > dices.count
+        } else if newNumberOfDices < dices.count {
+            repeat {
+                removeOneDice()
+            } while newNumberOfDices < dices.count
         }
+        
+        resetAll()
     }
     
     func rollAll() {

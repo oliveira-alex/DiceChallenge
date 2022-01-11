@@ -5,23 +5,26 @@
 //  Created by Alex Oliveira on 05/01/2022.
 //
 
-import SwiftUI
+import Foundation
 
 struct Result: Identifiable {
     var id = UUID()
     var numberOfDiceFaces = 6
     var faceUpValues: [Int] = []
-    var faceUpImages: [Image] {
-        var images: [Image] = []
+    var faceUpImageSFSymbolNames: [String] {
+        var imagesSFSymbolNames: [String] = []
         for faceUpValue in faceUpValues {
             if numberOfDiceFaces == 6 {
-                images.append(Image(systemName: "die.face.\(faceUpValue)"))
+                imagesSFSymbolNames.append("die.face.\(faceUpValue)")
             } else {
-                images.append(Image(systemName: "\(faceUpValue).square"))
+                imagesSFSymbolNames.append("\(faceUpValue).square")
             }
         }
         
-        return images
+        return imagesSFSymbolNames
+    }
+    var maxFaceValueSFSymbolName: String {
+        return (numberOfDiceFaces == 6) ? "die.face.6" : "\(numberOfDiceFaces).square"
     }
     var total: String {
         guard !faceUpValues.isEmpty else { return "Total" }
@@ -33,8 +36,6 @@ struct Result: Identifiable {
         
         return "\(totalValue)"
     }
-    
-    init() { }
     
     init(numberOfDices: Int) {
         numberOfDiceFaces = Dice.possibleNumberOfFaces.randomElement()!
@@ -68,7 +69,9 @@ class Results: ObservableObject {
     @Published private var results: [Result] = []
     
     var isEmpty: Bool { return results.isEmpty }
+    var count: Int { return results.count }
     var all: [Result] { return results }
+    var maxedOut: Bool { return results.count >= 99 }
     
     init(results: [Result]) {
         self.results = results
