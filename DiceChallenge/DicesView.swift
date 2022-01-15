@@ -77,7 +77,7 @@ struct DicesView: View {
                                     .frame(width: 150, height: 75)
                             )
                     }
-                    .disabled(results.maxedOut)
+                    .disabled(results.maxedOut || dices.areRolling)
                     
                     Spacer(minLength: 50)
                 }
@@ -113,8 +113,12 @@ struct DicesView: View {
     
     func rollDices() {
         dices.rollAll()
+
+        Task {
+            try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+            results.append(currentResult)
+        }
         
-        results.append(currentResult)
     }
 }
 

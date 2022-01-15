@@ -39,7 +39,12 @@ class Dice: Identifiable {
     }
 
     func roll() {
-        faceUpValue = Int.random(in: 1...numberOfFaces)
+        var newFaceUpValue = 0
+        repeat {
+            newFaceUpValue = Int.random(in: 1...numberOfFaces)
+        } while newFaceUpValue == faceUpValue
+        
+        faceUpValue = newFaceUpValue
     }
     
     func reset() {
@@ -50,6 +55,7 @@ class Dice: Identifiable {
 class Dices: ObservableObject {
     static let example = Dices(dices: [.example])
     static let singleDice = Dices(dices: [Dice()])
+    static let threeDices = Dices(dices: [Dice(), Dice(), Dice()])
     
     @Published private var dices: [Dice]
     var all: [Dice] { return dices }
@@ -62,6 +68,10 @@ class Dices: ObservableObject {
     }
     var maxFaceValueSFSymbolName: String {
         return (numberOfFaces == 6) ? "die.face.6" : "\(numberOfFaces).square"
+    }
+    @Published var remainingIterations = 0
+    var areRolling: Bool {
+        remainingIterations > 0
     }
 
     init(dices: [Dice]) {
@@ -105,8 +115,17 @@ class Dices: ObservableObject {
     }
     
     func rollAll() {
-        for dice in dices {
-            dice.roll()
+        let limiteOfIterations = 15
+        remainingIterations = limiteOfIterations
+        
+        for i in 0..<limiteOfIterations {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)/9) {
+                for dice in self.dices {
+                    dice.roll()
+                }
+                
+                self.remainingIterations -= 1
+            }
         }
     }
     
