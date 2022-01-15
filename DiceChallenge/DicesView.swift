@@ -112,13 +112,11 @@ struct DicesView: View {
     }
     
     func rollDices() {
-        dices.rollAll()
-
-        Task {
-            try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-            results.append(currentResult)
-        }
-        
+        dices.rollAll(andThen: appendCurrentResult)
+    }
+    
+    func appendCurrentResult() {
+        results.append(currentResult)
     }
 }
 

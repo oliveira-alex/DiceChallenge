@@ -114,7 +114,7 @@ class Dices: ObservableObject {
         resetAll()
     }
     
-    func rollAll() {
+    func rollAll(andThen completion: @escaping(() -> Void)) {
         let limiteOfIterations = 15
         remainingIterations = limiteOfIterations
         
@@ -125,6 +125,9 @@ class Dices: ObservableObject {
                 }
                 
                 self.remainingIterations -= 1
+                if self.remainingIterations == 0 {
+                    completion()
+                }
             }
         }
     }
