@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var results = Results()
-    var dices: Dices = .singleDice
+    var dices = Dices()
     
     var body: some View {
         TabView {

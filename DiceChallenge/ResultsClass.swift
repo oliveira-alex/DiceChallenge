@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Result: Identifiable {
+struct Result: Identifiable, Codable {
     var id = UUID()
     var numberOfDiceFaces = 6
     var faceUpValues: [Int] = []
@@ -59,6 +59,7 @@ struct Result: Identifiable {
 }
 
 class Results: ObservableObject {
+    static let saveKey = "DicesChallenge.SavedResults"
     static let example = Results(results: [Result(numberOfDices: 1),
                                            Result(numberOfDices: 2),
                                            Result(numberOfDices: 1),
@@ -79,15 +80,41 @@ class Results: ObservableObject {
         self.results = results
     }
     
+    func getDocumentsDirectoryURL() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func save() {
+        let filename = getDocumentsDirectoryURL().appendingPathComponent(Self.saveKey)
+        
+        do {
+            let encodedResults = try JSONEncoder().encode(results)
+            try encodedResults.write(to: filename, options: [.atomic])
+        } catch {
+            
+        }
+    }
+    
     convenience init() {
         self.init(results: [])
+        
+        let filename = getDocumentsDirectoryURL().appendingPathComponent(Self.saveKey)
+        do {
+            let encodedResults = try Data(contentsOf: filename)
+            results = try JSONDecoder().decode([Result].self, from: encodedResults)
+        } catch {
+            
+        }
     }
     
     func append(_ result: Result) {
         results.append(result)
+        save()
     }
     
     func removeAll() {
         results.removeAll()
+        save()
     }
 }

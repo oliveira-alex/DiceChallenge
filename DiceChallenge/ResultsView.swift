@@ -55,7 +55,7 @@ struct ResultsView: View {
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsView()
-            .environmentObject(Dices())
+            .environmentObject(Dices.example)
             .environmentObject(Results.example)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dice: Identifiable {
+class Dice: Identifiable, Codable {
     static let example = Dice(numberOfFaces: defaultNumberOfFaces, faceUpValue: 5)
     
     static let defaultNumberOfFaces = 6
@@ -53,6 +53,7 @@ class Dice: Identifiable {
 }
 
 class Dices: ObservableObject {
+    static let saveKey = "DicesChallenge.SavedDices"
     static let example = Dices(dices: [.example])
     static let singleDice = Dices(dices: [Dice()])
     static let threeDices = Dices(dices: [Dice(), Dice(), Dice()])
@@ -78,18 +79,44 @@ class Dices: ObservableObject {
         self.dices = dices
     }
     
+    func getDocumentsDirectoryURL() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func save() {
+        let filename = getDocumentsDirectoryURL().appendingPathComponent(Self.saveKey)
+        
+        do {
+            let encodedData = try JSONEncoder().encode(dices)
+            try encodedData.write(to: filename, options: [.atomic])
+        } catch {
+            
+        }
+    }
+    
     convenience init() {
         self.init(dices: [])
+        let filename = getDocumentsDirectoryURL().appendingPathComponent(Self.saveKey)
+        
+        do {
+            let encodedDices = try Data(contentsOf: filename)
+            dices = try JSONDecoder().decode([Dice].self, from: encodedDices)
+        } catch {
+            dices = [Dice()]
+        }
     }
 
     func addOneDice(numberOfFaces: Int) {
         dices.append(Dice(numberOfFaces: numberOfFaces))
+        save()
     }
     
     func removeOneDice() {
         guard dices.count > 0 else { return }
         
         let _ = dices.popLast()
+        save()
     }
     
     func getNewDices(numberOfFaces newNumberOfFaces: Int, numberOfDices newNumberOfDices: Int) {
@@ -98,8 +125,16 @@ class Dices: ObservableObject {
         repeat {
             addOneDice(numberOfFaces: newNumberOfFaces)
         } while dices.count < newNumberOfDices
+        save()
     }
     
+    func resetAll() {
+        for dice in dices {
+            dice.reset()
+        }
+        save()
+    }
+
     func setNumberOfDices(to newNumberOfDices: Int) {
         if newNumberOfDices > dices.count {
             repeat {
@@ -126,13 +161,11 @@ class Dices: ObservableObject {
                 
                 self.remainingIterations -= 1
                 completion()
+                
+                if self.remainingIterations == 0 {
+                    self.save()
+                }
             }
-        }
-    }
-    
-    func resetAll() {
-        for dice in dices {
-            dice.reset()
         }
     }
 }
