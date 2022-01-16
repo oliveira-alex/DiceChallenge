@@ -114,7 +114,7 @@ class Dices: ObservableObject {
         resetAll()
     }
     
-    func rollAll(_ completion: @escaping(() -> Void)) {
+    func rollAll(completion: @escaping(() -> Void)) {
         let limiteOfIterations = 15
         remainingIterations = limiteOfIterations
         
@@ -140,12 +140,12 @@ class Dices: ObservableObject {
     }
 }
 
-extension Dices {
-    func rollAll() async -> Result {
-        return await withUnsafeContinuation { continuation in
-            self.rollAll() {
-                continuation.resume(returning: Result(from: self))
-            }
-        }
-    }
-}
+//extension Dices {
+//    func rollAll() async -> Result {
+//        return await withUnsafeContinuation { continuation in
+//            self.rollAll {
+//                continuation.resume(returning: Result(from: self))
+//            }
+//        }
+//    }
+//}

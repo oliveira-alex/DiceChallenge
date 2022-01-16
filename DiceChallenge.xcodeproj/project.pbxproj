@@ -16,6 +16,7 @@
 		E79F1A032786069400292BD9 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A022786069400292BD9 /* DicesView.swift */; };
 		E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A0427861F5100292BD9 /* ResultsView.swift */; };
 		E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A06278628E000292BD9 /* ResultsClass.swift */; };
+		E7F37FCD27945C2C00739C71 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F37FCC27945C2C00739C71 /* DiceView.swift */; };
 		E7F48BB4278B142D00816112 /* DicesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F48BB3278B142D00816112 /* DicesClass.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,8 @@
 		E79F1A022786069400292BD9 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
 		E79F1A0427861F5100292BD9 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		E79F1A06278628E000292BD9 /* ResultsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsClass.swift; sourceTree = "<group>"; };
+		E7F37FCC27945C2C00739C71 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
+		E7F37FCE279467BF00739C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E7F48BB3278B142D00816112 /* DicesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,9 +66,11 @@
 		E79F19F3278604E800292BD9 /* DiceChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				E7F37FCE279467BF00739C71 /* Info.plist */,
 				E72D52AB27879EF600C5B1EF /* SettingsView.swift */,
 				E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */,
 				E79F19F6278604E800292BD9 /* ContentView.swift */,
+				E7F37FCC27945C2C00739C71 /* DiceView.swift */,
 				E79F1A022786069400292BD9 /* DicesView.swift */,
 				E79F1A0427861F5100292BD9 /* ResultsView.swift */,
 				E7F48BB3278B142D00816112 /* DicesClass.swift */,
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79F19F7278604E800292BD9 /* ContentView.swift in Sources */,
+				E7F37FCD27945C2C00739C71 /* DiceView.swift in Sources */,
 				E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */,
 				E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */,
 				E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */,
@@ -296,11 +302,12 @@
 				DEVELOPMENT_TEAM = 8373G5V95D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DiceChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -326,11 +333,12 @@
 				DEVELOPMENT_TEAM = 8373G5V95D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = DiceChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

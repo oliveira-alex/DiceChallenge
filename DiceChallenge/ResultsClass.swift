@@ -55,7 +55,7 @@ struct Result: Identifiable {
         }
     }
     
-    init() { }
+//    init() { }
 }
 
 class Results: ObservableObject {

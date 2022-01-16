@@ -13,7 +13,7 @@ struct DicesView: View {
     @EnvironmentObject var results: Results
 
     @State private var isShowingSettings = false
-    @State private var currentResult = Result()
+    private var currentResult: Result { Result(from: dices) }
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,6 +21,9 @@ struct DicesView: View {
             
             NavigationView {
                 VStack {
+                    Spacer()
+                        .frame(height: 30)
+                    
                     Text(currentResult.total)
                         .font(.largeTitle)
                         .background(
@@ -30,56 +33,59 @@ struct DicesView: View {
                         )
                         .foregroundColor(colorScheme == .light ? .white : .black)
                     
-                    Spacer(minLength: 40)
+                    Spacer()
                     
                     VStack {
                         HStack {
-                            Image(systemName: dices.all[0].faceUpImageSFSymbolName)
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fit)
+                            DiceView(systemName: dices.all[0].faceUpImageSFSymbolName)
 
                             if dices.count > 1 {
-                                Image(systemName: dices.all[1].faceUpImageSFSymbolName)
-                                    .resizable()
-                                    .aspectRatio(1, contentMode: .fit)
+                                DiceView(systemName: dices.all[1].faceUpImageSFSymbolName)
                             }
                         }
 
-                        if dices.count > 1 {
+                        if dices.count > 2 {
                             HStack {
                                 if dices.count > 2 {
-                                    Image(systemName: dices.all[2].faceUpImageSFSymbolName)
-                                        .resizable()
-                                        .aspectRatio(1, contentMode: .fit)
+                                    DiceView(systemName: dices.all[2].faceUpImageSFSymbolName)
+                                        .frame(maxWidth: (screenWidth - 2*screenWidth/18)/2)
                                 }
                                 
                                 if dices.count > 3 {
-                                        Image(systemName: dices.all[3].faceUpImageSFSymbolName)
-                                            .resizable()
-                                            .aspectRatio(1, contentMode: .fit)
+                                    DiceView(systemName: dices.all[3].faceUpImageSFSymbolName)
                                 }
                             }
-                            .frame(maxWidth: screenWidth, maxHeight: (screenWidth - 2*20)/2)
                         }
                     }
-                    .padding([.horizontal], 20)
+                    .padding(screenWidth/18)
                     .frame(maxWidth: screenWidth, maxHeight: screenWidth)
+                    .background(
+                        RoundedRectangle(cornerRadius: geometry.size.width/8)
+                            .stroke(colorScheme == .light ? .black : .white)
+                            .background(
+                                RoundedRectangle(cornerRadius: geometry.size.width/8)
+                                    .fill(Color.secondary.opacity(0.3))
+                            )
+                            .padding(9)
+                    )
                     
-                    Spacer(minLength: 50)
+                    Spacer()
 
                     Button(action: rollDices) {
                         Text(results.maxedOut ? "Maxed Out" : "Roll \(dices.diceOrDices)")
                             .font(.title2)
                             .background(
                                 Capsule()
-                                    .stroke(Color.accentColor, lineWidth: 1.5)
+                                    .fill(Color.accentColor)
                                     .frame(width: 150, height: 75)
                             )
+                            .foregroundColor(.white)
                     }
                     .disabled(results.maxedOut || dices.areRolling)
                     
-                    Spacer(minLength: 50)
+                    Spacer()
                 }
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
                         Button(action: { isShowingSettings.toggle() }) {
@@ -111,19 +117,14 @@ struct DicesView: View {
     }
     
     func rollDices() {
-        currentResult = Result()
-        
-        Task {
-            currentResult = await dices.rollAll()
-            results.append(currentResult)
-        }
+        dices.rollAll(completion: { results.append(currentResult) })
     }
 }
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
         DicesView()
-            .environmentObject(Dices.example)
+            .environmentObject(Dices.threeDices)
             .environmentObject(Results.example)
 //            .preferredColorScheme(.dark)
     }
