@@ -22,8 +22,7 @@ struct DicesView: View {
             
             NavigationView {
                 VStack {
-                    Spacer()
-                        .frame(height: 30)
+                    Spacer(minLength: 30)
                     
                     Text(currentResult.total)
                         .font(.largeTitle)
@@ -34,7 +33,7 @@ struct DicesView: View {
                         )
                         .foregroundColor(colorScheme == .light ? .white : .black)
                     
-                    Spacer()
+                    Spacer(minLength: 30)
                     
                     VStack {
                         HStack {
@@ -59,7 +58,7 @@ struct DicesView: View {
                         }
                     }
                     .padding(screenWidth/18)
-                    .frame(maxWidth: screenWidth, maxHeight: screenWidth)
+                    .frame(width: screenWidth, height: screenWidth)
                     .background(
                         RoundedRectangle(cornerRadius: geometry.size.width/8)
                             .stroke(colorScheme == .light ? .black : .white)
@@ -70,7 +69,7 @@ struct DicesView: View {
                             .padding(9)
                     )
                     
-                    Spacer()
+                    Spacer(minLength: 30)
 
                     Button(action: rollDices) {
                         Text(results.maxedOut ? "Maxed Out" : "Roll \(dices.diceOrDices)")
@@ -84,7 +83,7 @@ struct DicesView: View {
                     }
                     .disabled(results.maxedOut || dices.areRolling)
                     
-                    Spacer()
+                    Spacer(minLength: 80)
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -131,7 +130,7 @@ struct DicesView: View {
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
         DicesView()
-            .environmentObject(Dices.threeDices)
+            .environmentObject(Dices.example)
             .environmentObject(Results.example)
 //            .preferredColorScheme(.dark)
     }
