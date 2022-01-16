@@ -125,10 +125,7 @@ class Dices: ObservableObject {
                 }
                 
                 self.remainingIterations -= 1
-                
-                if self.remainingIterations == 0 {
-                    completion()
-                }
+                completion()
             }
         }
     }

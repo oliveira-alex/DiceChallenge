@@ -14,6 +14,7 @@ struct DicesView: View {
 
     @State private var isShowingSettings = false
     private var currentResult: Result { Result(from: dices) }
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     var body: some View {
         GeometryReader { geometry in
@@ -117,7 +118,13 @@ struct DicesView: View {
     }
     
     func rollDices() {
-        dices.rollAll(completion: { results.append(currentResult) })
+        dices.rollAll {
+            if dices.areRolling {
+                feedback.notificationOccurred(.success)
+            } else {
+                results.append(currentResult)
+            }
+        }
     }
 }
 
