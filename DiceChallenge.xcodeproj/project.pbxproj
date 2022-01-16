@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		E72D52AB27879EF600C5B1EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E72D52AD2787AEA500C5B1EF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		E79F19F1278604E800292BD9 /* DiceChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E79F19F1278604E800292BD9 /* Some Dices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Some Dices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceChallengeApp.swift; sourceTree = "<group>"; };
 		E79F19F6278604E800292BD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E79F19F8278604EA00292BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		E79F19F2278604E800292BD9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E79F19F1278604E800292BD9 /* DiceChallenge.app */,
+				E79F19F1278604E800292BD9 /* Some Dices.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E79F19F0278604E800292BD9 /* DiceChallenge */ = {
+		E79F19F0278604E800292BD9 /* Some Dices */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E79F19FF278604EA00292BD9 /* Build configuration list for PBXNativeTarget "DiceChallenge" */;
+			buildConfigurationList = E79F19FF278604EA00292BD9 /* Build configuration list for PBXNativeTarget "Some Dices" */;
 			buildPhases = (
 				E79F19ED278604E800292BD9 /* Sources */,
 				E79F19EE278604E800292BD9 /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = DiceChallenge;
+			name = "Some Dices";
 			productName = DiceChallenge;
-			productReference = E79F19F1278604E800292BD9 /* DiceChallenge.app */;
+			productReference = E79F19F1278604E800292BD9 /* Some Dices.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E79F19F0278604E800292BD9 /* DiceChallenge */,
+				E79F19F0278604E800292BD9 /* Some Dices */,
 			);
 		};
 /* End PBXProject section */
@@ -365,7 +365,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E79F19FF278604EA00292BD9 /* Build configuration list for PBXNativeTarget "DiceChallenge" */ = {
+		E79F19FF278604EA00292BD9 /* Build configuration list for PBXNativeTarget "Some Dices" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E79F1A00278604EA00292BD9 /* Debug */,
