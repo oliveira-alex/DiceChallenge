@@ -69,7 +69,7 @@ class Dices: ObservableObject {
     var maxFaceValueSFSymbolName: String {
         return (numberOfFaces == 6) ? "die.face.6" : "\(numberOfFaces).square"
     }
-    @Published var remainingIterations = 0
+    @Published private var remainingIterations = 0
     var areRolling: Bool {
         remainingIterations > 0
     }
@@ -114,7 +114,7 @@ class Dices: ObservableObject {
         resetAll()
     }
     
-    func rollAll(andThen completion: @escaping(() -> Void)) {
+    func rollAll(_ completion: @escaping(() -> Void)) {
         let limiteOfIterations = 15
         remainingIterations = limiteOfIterations
         
@@ -125,6 +125,7 @@ class Dices: ObservableObject {
                 }
                 
                 self.remainingIterations -= 1
+                
                 if self.remainingIterations == 0 {
                     completion()
                 }
@@ -135,6 +136,16 @@ class Dices: ObservableObject {
     func resetAll() {
         for dice in dices {
             dice.reset()
+        }
+    }
+}
+
+extension Dices {
+    func rollAll() async -> Result {
+        return await withUnsafeContinuation { continuation in
+            self.rollAll() {
+                continuation.resume(returning: Result(from: self))
+            }
         }
     }
 }

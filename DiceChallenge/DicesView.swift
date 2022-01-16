@@ -13,8 +13,7 @@ struct DicesView: View {
     @EnvironmentObject var results: Results
 
     @State private var isShowingSettings = false
-
-    private var currentResult: Result { Result(from: dices) }
+    @State private var currentResult = Result()
     
     var body: some View {
         GeometryReader { geometry in
@@ -112,11 +111,12 @@ struct DicesView: View {
     }
     
     func rollDices() {
-        dices.rollAll(andThen: appendCurrentResult)
-    }
-    
-    func appendCurrentResult() {
-        results.append(currentResult)
+        currentResult = Result()
+        
+        Task {
+            currentResult = await dices.rollAll()
+            results.append(currentResult)
+        }
     }
 }
 
