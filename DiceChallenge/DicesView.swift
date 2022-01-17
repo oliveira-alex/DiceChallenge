@@ -18,7 +18,10 @@ struct DicesView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            let screenHeight = geometry.size.height
             let screenWidth = geometry.size.width
+            let frameAspectRatio =  screenWidth/screenHeight
+            let availableFrameWidth = frameAspectRatio > 0.65 ? 0.65*screenHeight : screenWidth
             
             NavigationView {
                 VStack {
@@ -48,7 +51,6 @@ struct DicesView: View {
                             HStack {
                                 if dices.count > 2 {
                                     DiceView(systemName: dices.all[2].faceUpImageSFSymbolName)
-                                        .frame(maxWidth: (screenWidth - 2*screenWidth/18)/2)
                                 }
                                 
                                 if dices.count > 3 {
@@ -57,13 +59,13 @@ struct DicesView: View {
                             }
                         }
                     }
-                    .padding(screenWidth/18)
-                    .frame(width: screenWidth, height: screenWidth)
+                    .padding(availableFrameWidth/18)
+                    .frame(width: availableFrameWidth, height: availableFrameWidth)
                     .background(
-                        RoundedRectangle(cornerRadius: geometry.size.width/8)
+                        RoundedRectangle(cornerRadius: availableFrameWidth/8)
                             .stroke(colorScheme == .light ? .black : .white)
                             .background(
-                                RoundedRectangle(cornerRadius: geometry.size.width/8)
+                                RoundedRectangle(cornerRadius: availableFrameWidth/8)
                                     .fill(Color.secondary.opacity(0.3))
                             )
                             .padding(9)

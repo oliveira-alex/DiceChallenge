@@ -13,16 +13,41 @@ struct DiceView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            let frameWidth = geometry.size.width
+            let frameHeight = geometry.size.height
+            let smallestLenght = frameWidth < frameHeight ? frameWidth : frameHeight
+            
             Image(systemName: systemName)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .background(
-                    RoundedRectangle(cornerRadius: geometry.size.width/8, style: .continuous)
+                    RoundedRectangle(cornerRadius: smallestLenght/8, style: .continuous)
                         .fill(colorScheme == .light ? .white : .black)
                         .padding(10)
                 )
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                .frame(width: smallestLenght, height: smallestLenght)
+                .centered()
         }
+    }
+}
+
+struct CenterModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        VStack {
+            Spacer(minLength: 0)
+            HStack {
+                Spacer(minLength: 0)
+                content
+                Spacer(minLength: 0)
+            }
+            Spacer(minLength: 0)
+        }
+    }
+}
+
+extension View {
+    func centered() -> some View {
+        modifier(CenterModifier())
     }
 }
 

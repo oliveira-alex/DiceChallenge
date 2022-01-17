@@ -12,21 +12,24 @@ struct ContentView: View {
     var dices = Dices()
     
     var body: some View {
-        TabView {
-            DicesView()
-                .tabItem {
-                    Image(systemName: "dice")
-                    Text("Dice")
-                }
-            
-            ResultsView()
-                .tabItem {
-                    Image(systemName: "list.bullet.rectangle.portrait")
-                    Text("Results")
-                }
+        GeometryReader { geometry in
+            TabView {
+                DicesView()
+                    .tabItem {
+                        Image(systemName: "dice")
+                        Text("Dice")
+                    }
+                
+                ResultsView()
+                    .tabItem {
+                        Image(systemName: "list.bullet.rectangle.portrait")
+                        Text("Results")
+                    }
+            }
+            .environmentObject(dices)
+            .environmentObject(results)
+            .centered()
         }
-        .environmentObject(dices)
-        .environmentObject(results)
     }
 }
 
