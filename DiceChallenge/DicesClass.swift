@@ -154,7 +154,7 @@ class Dices: ObservableObject {
         remainingIterations = limiteOfIterations
         
         for i in 0..<limiteOfIterations {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)/9) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/35) {
                 for dice in self.dices {
                     dice.roll()
                 }
