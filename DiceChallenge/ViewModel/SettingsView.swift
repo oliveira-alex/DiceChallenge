@@ -54,8 +54,10 @@ struct SettingsView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     CustomToolbarButton(title: "Apply") {
                         if newNumberOfDiceFaces != dices.numberOfFaces {
-                            dices.getNewDices(numberOfFaces: newNumberOfDiceFaces, numberOfDices: newNumberOfDices)
-                        } else if newNumberOfDices != dices.count {
+                            dices.setNumberOfDiceFaces(to: newNumberOfDiceFaces)
+                        }
+                        
+                        if newNumberOfDices != dices.count {
                             dices.setNumberOfDices(to: newNumberOfDices)
                         }
                         

@@ -16,7 +16,7 @@ struct Dice: Identifiable, Codable {
     static let possibleNumberOfIterations = [limiteOfIterations, limiteOfIterations/2, limiteOfIterations/4]
     
     var id = UUID()
-    let numberOfFaces: Int
+    var numberOfFaces: Int
     var faceUpValue: Int
     var faceUpImageSFSymbolName: String {
         if faceUpValue == 0 {
@@ -131,13 +131,12 @@ class Dices: ObservableObject {
         save()
     }
     
-    func getNewDices(numberOfFaces newNumberOfFaces: Int, numberOfDices newNumberOfDices: Int) {
-        dices.removeAll()
+    func setNumberOfDiceFaces(to newNumberOfFaces: Int) {
+        for i in 0..<dices.count {
+            dices[i].numberOfFaces = newNumberOfFaces
+        }
         
-        repeat {
-            addOneDice(numberOfFaces: newNumberOfFaces)
-        } while dices.count < newNumberOfDices
-        save()
+        resetAll()
     }
     
     func resetAll() {
