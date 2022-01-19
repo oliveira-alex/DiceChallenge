@@ -150,11 +150,12 @@ class Dices: ObservableObject {
     }
     
     func rollAll(completion: @escaping(() -> Void)) {
-        let limiteOfIterations = 15
-        remainingIterations = limiteOfIterations
+        let limiteOfIterations = 21
+        let initialIteration = [0, 7, 14].randomElement()!
+        remainingIterations = limiteOfIterations - initialIteration
         
-        for i in 0..<limiteOfIterations {
-            DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/35) {
+        for i in initialIteration..<limiteOfIterations {
+            DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/50 - pow(Double(initialIteration), 1.5)/50) {
                 for dice in self.dices {
                     dice.roll()
                 }
