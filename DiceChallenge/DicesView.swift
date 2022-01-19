@@ -120,9 +120,8 @@ struct DicesView: View {
     
     func rollDices() {
         dices.rollAll {
-            if dices.areRolling {
-                feedback.notificationOccurred(.success)
-            } else {
+            feedback.notificationOccurred(.success)
+            if dices.areRolling == false {
                 results.append(currentResult)
             }
         }

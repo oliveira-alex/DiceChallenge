@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Result: Identifiable, Codable {
+struct Result: Identifiable, Codable, Equatable {
     var id = UUID()
     var numberOfDiceFaces = 6
     var faceUpValues: [Int] = []
@@ -55,7 +55,9 @@ struct Result: Identifiable, Codable {
         }
     }
     
-//    init() { }
+    static func ==(lhs: Result, rhs: Result) -> Bool {
+       lhs.faceUpValues == rhs.faceUpValues
+    }
 }
 
 class Results: ObservableObject {
