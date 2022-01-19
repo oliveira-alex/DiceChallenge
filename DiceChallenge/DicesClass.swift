@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dice: Identifiable, Codable {
+struct Dice: Identifiable, Codable {
     static let example = Dice(numberOfFaces: defaultNumberOfFaces, faceUpValue: 5)
     
     static let defaultNumberOfFaces = 6
@@ -30,15 +30,15 @@ class Dice: Identifiable, Codable {
         self.faceUpValue = faceUpValue
     }
     
-    convenience init(numberOfFaces: Int) {
+    init(numberOfFaces: Int) {
         self.init(numberOfFaces: numberOfFaces, faceUpValue: 0)
     }
     
-    convenience init() {
+    init() {
         self.init(numberOfFaces: Dice.defaultNumberOfFaces, faceUpValue: 0)
     }
 
-    func roll() {
+    mutating func roll() {
         var newFaceUpValue = 0
         repeat {
             newFaceUpValue = Int.random(in: 1...numberOfFaces)
@@ -47,7 +47,7 @@ class Dice: Identifiable, Codable {
         faceUpValue = newFaceUpValue
     }
     
-    func reset() {
+    mutating func reset() {
         faceUpValue = 0
     }
 }
@@ -70,7 +70,7 @@ class Dices: ObservableObject {
     var maxFaceValueSFSymbolName: String {
         return (numberOfFaces == 6) ? "die.face.6" : "\(numberOfFaces).square"
     }
-    @Published private var remainingIterations = 0
+    private var remainingIterations = 0
     var areRolling: Bool {
         remainingIterations > 0
     }
@@ -129,8 +129,8 @@ class Dices: ObservableObject {
     }
     
     func resetAll() {
-        for dice in dices {
-            dice.reset()
+        for i in 0..<dices.count {
+            dices[i].reset()
         }
         save()
     }
@@ -150,21 +150,34 @@ class Dices: ObservableObject {
     }
     
     func rollAll(completion: @escaping(() -> Void)) {
-        let limiteOfIterations = 18
-        let initialIteration = [0, 3, 6, 9].randomElement()!
-        remainingIterations = limiteOfIterations - initialIteration
+        let limiteOfIterations = 25
+        let possibleInitialIterations = [0, 8, 16]
+
+        var initalIterations: [Int] = []
+        for _ in 0..<dices.count {
+            initalIterations.append(possibleInitialIterations.randomElement()!)
+        }
+
+        var minimumInitialIteration: Int { return initalIterations.min()! }
+        var referenceDiceIndex: Int { return initalIterations.firstIndex(of: minimumInitialIteration)! }
+        remainingIterations = limiteOfIterations - minimumInitialIteration
+        print(initalIterations)
         
-        for i in initialIteration..<limiteOfIterations {
-            DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/45 - pow(Double(initialIteration), 1.5)/45) {
-                for dice in self.dices {
-                    dice.roll()
-                }
-                
-                self.remainingIterations -= 1
-                completion()
-                
-                if self.remainingIterations == 0 {
-                    self.save()
+        for j in 0..<dices.count {
+            let initialIteration = initalIterations[j]
+            
+            for i in initialIteration..<limiteOfIterations {
+                DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/45 - pow(Double(initialIteration), 1.5)/45) { [weak self] in
+                    self?.dices[j].roll()
+
+                    if j == referenceDiceIndex {
+                        self?.remainingIterations -= 1
+                        completion()
+                        
+                        if self?.remainingIterations == 0 {
+                            self?.save()
+                        }
+                    }
                 }
             }
         }
