@@ -27,7 +27,7 @@ struct DicesView: View {
                 VStack {
                     Spacer(minLength: 30)
                     
-                    Text(currentResult.total)
+                    Text(dices.areRolling ? "Total" : currentResult.total)
                         .font(.largeTitle)
                         .background(
                             Circle()
@@ -91,13 +91,19 @@ struct DicesView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading){
                         Button(action: { isShowingSettings.toggle() }) {
-                            Image(systemName: "gear")
+                            Image(systemName: "gearshape.circle.fill")
                                 .resizable()
-                                .frame(width: 35, height: 35)
+                                .scaledToFit()
+                                .background(
+                                    Circle()
+                                        .fill(.white)
+                                )
+                                .padding([.vertical], 20)
+                                .frame(width: 85, height: 85, alignment: .leading)
                         }
                     }
                     
-                    ToolbarItem(placement: .navigationBarTrailing){
+                    ToolbarItem(placement: .navigationBarTrailing) {
                         VStack(spacing: 0) {
                             Image(systemName: dices.maxFaceValueSFSymbolName)
                                 .resizable()
@@ -106,7 +112,7 @@ struct DicesView: View {
                             Text("max")
                                 .font(.system(size: 10))
                         }
-                        .frame(width: 35, height: 35)
+                        .frame(width: 40, height: 40)
                     }
                 }
                 .sheet(isPresented: $isShowingSettings) {

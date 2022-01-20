@@ -46,7 +46,7 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    CustomToolbarButton(title: "Cancel"){
+                    CustomToolbarButton(title: "Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -74,5 +74,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(Dices.example)
+//            .preferredColorScheme(.dark)
     }
 }

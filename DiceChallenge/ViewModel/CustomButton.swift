@@ -18,9 +18,10 @@ struct CustomToolbarButton: View {
                 .background(
                     HStack {
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.accentColor)
+                            .fill(Color.accentColor)
                     }
                 )
+                .foregroundColor(.white)
         }
     }
 }
