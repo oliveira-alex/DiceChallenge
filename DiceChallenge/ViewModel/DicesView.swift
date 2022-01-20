@@ -98,7 +98,7 @@ struct DicesView: View {
                                     Circle()
                                         .fill(.white)
                                 )
-                                .padding([.vertical], 20)
+                                .padding([.vertical], 22)
                                 .frame(width: 85, height: 85, alignment: .leading)
                         }
                     }

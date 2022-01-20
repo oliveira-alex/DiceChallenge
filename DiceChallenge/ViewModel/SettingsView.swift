@@ -74,6 +74,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(Dices.example)
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
