@@ -14,14 +14,14 @@ struct CustomToolbarButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .frame(width: 100, height: 35)
+                .frame(width: 70, height: 35)
                 .background(
                     HStack {
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.accentColor)
+                            .stroke(Color.accentColor)
                     }
                 )
-                .foregroundColor(.white)
+                .foregroundColor(Color.accentColor)
         }
     }
 }

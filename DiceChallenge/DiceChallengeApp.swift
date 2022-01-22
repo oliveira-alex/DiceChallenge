@@ -15,7 +15,8 @@ struct DiceChallengeApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: UIScene.willConnectNotification)) { _ in
                     #if targetEnvironment(macCatalyst)
                     UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
-                        windowScene.sizeRestrictions?.minimumSize = CGSize(width: 600, height: 800)
+                        windowScene.sizeRestrictions?.minimumSize = CGSize(width: 600, height: 1000)
+                        windowScene.sizeRestrictions?.maximumSize = CGSize(width: 600, height: 1000)
                     }
                     #endif
                 }

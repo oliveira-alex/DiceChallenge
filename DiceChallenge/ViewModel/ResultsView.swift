@@ -12,50 +12,69 @@ struct ResultsView: View {
     @EnvironmentObject var results: Results
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
-                    HStack {
-                        Text("\(resultIndex + 1). ")
-                            .frame(width: 30, alignment: .leading)
-                        
-                        ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
-                            if diceIndex != 0 { Text("+") }
-                            
-                            Image(systemName: faceUpImageSFSymbolName)
-                        }
-                        
-                        Text("= \(result.total)")
-                        
-                        Spacer()
-                        
-                        VStack(spacing: 0) {
-                            Image(systemName: result.maxFaceValueSFSymbolName)
-                            
-                            Text("max")
-                                .font(.system(size: 8))
-                        }
-                        
-                    }
-                }
-            }
-            .navigationTitle("Previously Rolled")
-            .toolbar {
+        VStack(spacing: 0) {
+            HStack {
+                Text("History")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                
+                Spacer()
+                
                 CustomToolbarButton(title: "Clear") {
                     results.removeAll()
                     dices.resetAll()
                 }
                 .disabled(results.isEmpty)
             }
+            .padding([.vertical])
+            
+            List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
+                HStack {
+                    Text("\(resultIndex + 1). ")
+                        .frame(width: 25, alignment: .leading)
+                    
+                    ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
+                        if diceIndex != 0 { Text("+") }
+                        
+                        Image(systemName: faceUpImageSFSymbolName)
+                    }
+                    
+                    Text("= \(result.total)")
+                    
+                    Spacer()
+                    
+                    VStack(spacing: 0) {
+                        Image(systemName: result.maxFaceValueSFSymbolName)
+                        
+                        Text("max")
+                            .font(.system(size: 8))
+                    }
+                }
+                .listRowBackground(Color.clear)
+            }
+            .listStyle(PlainListStyle())
+            .background(Color.gray.opacity(0.25))
+            .clipShape(
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+            )
+
+            Spacer(minLength: 60)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .padding(.horizontal)
     }
 }
+
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         ResultsView()
             .environmentObject(Dices.example)
             .environmentObject(Results.example)
+//            .preferredColorScheme(.dark)
+        
+        SettingsView()
+            .environmentObject(Dices.example)
+//            .preferredColorScheme(.dark)
     }
 }
