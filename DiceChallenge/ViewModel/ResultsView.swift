@@ -10,6 +10,7 @@ import SwiftUI
 struct ResultsView: View {
     @EnvironmentObject var dices: Dices
     @EnvironmentObject var results: Results
+    @State private var isShowingAlert = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -22,10 +23,19 @@ struct ResultsView: View {
                 Spacer()
                 
                 CustomToolbarButton(title: "Clear") {
-                    results.removeAll()
-                    dices.resetAll()
+                    isShowingAlert.toggle()
                 }
                 .disabled(results.isEmpty)
+                .alert("Clear history", isPresented: $isShowingAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    
+                    Button("Clear", role: .destructive) {
+                        results.removeAll()
+                        dices.resetAll()
+                    }
+                } message: {
+                    Text("This will clear all results")
+                }
             }
             .padding([.vertical])
             
