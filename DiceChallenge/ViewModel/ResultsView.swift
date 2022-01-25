@@ -32,7 +32,7 @@ struct ResultsView: View {
             List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
                     Text("\(resultIndex + 1). ")
-                        .frame(width: 25, alignment: .leading)
+                        .frame(width: 26, alignment: .leading)
                     
                     ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
                         if diceIndex != 0 { Text("+") }

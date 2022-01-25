@@ -15,14 +15,14 @@ struct DiceView: View {
         GeometryReader { geometry in
             let frameWidth = geometry.size.width
             let frameHeight = geometry.size.height
-            let smallestLenght = frameWidth < frameHeight ? frameWidth : frameHeight
+            let smallestLenght = (frameWidth < frameHeight) ? frameWidth : frameHeight
             
             Image(systemName: systemName)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .background(
                     RoundedRectangle(cornerRadius: smallestLenght/8, style: .continuous)
-                        .fill(colorScheme == .light ? .white : .black)
+                        .fill((colorScheme == .light) ? .white : .black)
                         .padding(10)
                 )
                 .frame(width: smallestLenght, height: smallestLenght)

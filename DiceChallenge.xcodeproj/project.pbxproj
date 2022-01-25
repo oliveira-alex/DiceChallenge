@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AB27879EF600C5B1EF /* SettingsView.swift */; };
 		E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AD2787AEA500C5B1EF /* CustomButton.swift */; };
+		E734E446279F67F200CFB53A /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734E445279F67F200CFB53A /* MyTabView.swift */; };
 		E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */; };
 		E79F19F7278604E800292BD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F6278604E800292BD9 /* ContentView.swift */; };
 		E79F19F9278604EA00292BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F19F8278604EA00292BD9 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		E72D52AB27879EF600C5B1EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E72D52AD2787AEA500C5B1EF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E734E445279F67F200CFB53A /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTabView.swift; path = DiceChallenge/View/MyTabView.swift; sourceTree = SOURCE_ROOT; };
 		E770DA522795AE440057B7BF /* Some Dices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Some Dices.entitlements"; sourceTree = "<group>"; };
 		E79F19F1278604E800292BD9 /* Some Dices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Some Dices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceChallengeApp.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		E7F37FC72798B42E008A31BC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E734E445279F67F200CFB53A /* MyTabView.swift */,
 				E72D52AD2787AEA500C5B1EF /* CustomButton.swift */,
 				E7F37FCC27945C2C00739C71 /* DiceView.swift */,
 				E79F1A022786069400292BD9 /* DicesView.swift */,
@@ -190,6 +193,7 @@
 				E7F37FCD27945C2C00739C71 /* DiceView.swift in Sources */,
 				E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */,
 				E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */,
+				E734E446279F67F200CFB53A /* MyTabView.swift in Sources */,
 				E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */,
 				E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */,
 				E7F48BB4278B142D00816112 /* DicesClass.swift in Sources */,

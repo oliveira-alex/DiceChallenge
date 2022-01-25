@@ -167,7 +167,7 @@ class Dices: ObservableObject {
             let initialIteration = Dice.limiteOfIterations - numberOfIterations
             
             for i in initialIteration..<Dice.limiteOfIterations {
-                DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i),1.5)/45 - pow(Double(initialIteration), 1.5)/45) { [weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + pow(Double(i), 1.5)/45 - pow(Double(initialIteration), 1.5)/45) { [weak self] in
                     self?.dices[n].roll()
 
                     completion()

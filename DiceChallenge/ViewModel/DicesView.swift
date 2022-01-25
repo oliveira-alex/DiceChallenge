@@ -21,7 +21,7 @@ struct DicesView: View {
             let screenHeight = geometry.size.height
             let screenWidth = geometry.size.width
             let frameAspectRatio =  screenWidth/screenHeight
-            let availableFrameWidth = frameAspectRatio > 0.65 ? 0.65*screenHeight : screenWidth
+            let availableFrameWidth = (frameAspectRatio > 0.65) ? 0.65*screenHeight : screenWidth
             
             VStack {
                 HStack {
@@ -51,7 +51,7 @@ struct DicesView: View {
                             .fill(Color.primary)
                             .frame(width: 80, height: 80)
                     )
-                    .foregroundColor(colorScheme == .light ? .white : .black)
+                    .foregroundColor((colorScheme == .light) ? .white : .black)
                 
                 Spacer(minLength: 30)
                 
