@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		E72D52AB27879EF600C5B1EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E72D52AD2787AEA500C5B1EF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		E734E445279F67F200CFB53A /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTabView.swift; path = DiceChallenge/View/MyTabView.swift; sourceTree = SOURCE_ROOT; };
+		E734E445279F67F200CFB53A /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTabView.swift; path = DiceChallenge/ViewModel/MyTabView.swift; sourceTree = SOURCE_ROOT; };
 		E770DA522795AE440057B7BF /* Some Dices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Some Dices.entitlements"; sourceTree = "<group>"; };
 		E79F19F1278604E800292BD9 /* Some Dices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Some Dices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceChallengeApp.swift; sourceTree = "<group>"; };
