@@ -11,10 +11,12 @@ struct DicesView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var dices: Dices
     @EnvironmentObject var results: Results
+    @Binding var selectedTab: String
 
     @State private var isShowingSettings = false
     private var currentResult: Result { Result(from: dices) }
     @State private var feedback = UINotificationFeedbackGenerator()
+    @State private var isShowingAlert = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -24,22 +26,26 @@ struct DicesView: View {
             let availableFrameWidth = (frameAspectRatio > 0.65) ? 0.65*screenHeight : screenWidth
             
             VStack {
-                HStack {
-                    HStack(alignment: .top, spacing: 3) {
-                        Text("\(dices.count)")
-                            .font(.title)
-                            
-                        VStack(spacing: 0) {
-                            Image(systemName: dices.maxFaceValueSFSymbolName)
-                                .resizable()
-                                .aspectRatio(1, contentMode: .fit)
+                Button {
+                    withAnimation { selectedTab = "Settings" }
+                } label: {
+                    HStack {
+                        HStack(alignment: .top, spacing: 3) {
+                            Text(String(localized: "\(dices.count)", comment: "No action required"))
+                                .font(.title)
+                                
+                            VStack(spacing: 0) {
+                                Image(systemName: dices.maxFaceValueSFSymbolName)
+                                    .resizable()
+                                    .aspectRatio(1, contentMode: .fit)
 
-                            Text("max")
-                                .font(.system(size: 10))
+                                Text("max")
+                                    .font(.system(size: 10))
+                            }
                         }
+                        .frame(width: 50, height: 40)
+                        .padding([.top, .horizontal])
                     }
-                    .frame(width: 50, height: 40)
-                    .padding([.top, .horizontal])
 
                     Spacer()
                 }
@@ -86,7 +92,7 @@ struct DicesView: View {
                 Spacer(minLength: 30)
 
                 Button(action: rollDices) {
-                    Text(results.maxedOut ? "Maxed Out" : "Roll \(dices.diceOrDices)")
+                    ((dices.count > 1) ? Text("Roll Dices") : Text("Roll Dice"))
                         .font(.title2)
                         .background(
                             Capsule()
@@ -99,6 +105,17 @@ struct DicesView: View {
                 
                 Spacer(minLength: 93)
             }
+            .alert("History Maxed Out", isPresented: $isShowingAlert) {
+                Button("Later", role: .cancel) {
+                    withAnimation { selectedTab = "Results" }
+                }
+                Button("Clear", role: .destructive) {
+                    results.removeAll()
+                    dices.resetAll()
+                }
+            } message: {
+                Text("Clear history to enable more dice rolls")
+            }
         }
     }
     
@@ -108,6 +125,10 @@ struct DicesView: View {
                 feedback.notificationOccurred(.success)
             } else {
                 results.append(currentResult)
+                
+                if results.maxedOut {
+                    isShowingAlert.toggle()
+                }
             }
         }
     }
@@ -115,7 +136,7 @@ struct DicesView: View {
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DicesView()
+        DicesView(selectedTab: .constant("Dices"))
             .environmentObject(Dices.threeDices)
             .environmentObject(Results.example)
 .previewInterfaceOrientation(.portrait)

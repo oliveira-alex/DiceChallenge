@@ -11,6 +11,7 @@ struct ResultsView: View {
     @EnvironmentObject var dices: Dices
     @EnvironmentObject var results: Results
     @State private var isShowingAlert = false
+    @Binding var selectedTab: String
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,31 +27,32 @@ struct ResultsView: View {
                     isShowingAlert.toggle()
                 }
                 .disabled(results.isEmpty)
-                .alert("Clear history", isPresented: $isShowingAlert) {
+                .alert("Clear History", isPresented: $isShowingAlert) {
                     Button("Cancel", role: .cancel) { }
                     
                     Button("Clear", role: .destructive) {
                         results.removeAll()
                         dices.resetAll()
+                        withAnimation { selectedTab = "Dices" }
                     }
                 } message: {
-                    Text("This will clear all results")
+                    Text("This will erase all previous results")
                 }
             }
             .padding([.vertical])
             
             List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
-                    Text("\(resultIndex + 1). ")
+                    Text(String(localized: "\(resultIndex + 1). ", comment: "No translation required"))
                         .frame(width: 26, alignment: .leading)
                     
                     ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
-                        if diceIndex != 0 { Text("+") }
+                        if diceIndex != 0 { Text(String(localized: "+", comment: "No translation required")) }
                         
                         Image(systemName: faceUpImageSFSymbolName)
                     }
                     
-                    Text("= \(result.total)")
+                    Text(String(localized: "= \(result.total)", comment: "No translation required"))
                     
                     Spacer()
                     
@@ -78,9 +80,10 @@ struct ResultsView: View {
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultsView()
+        ResultsView(selectedTab: .constant("Results"))
             .environmentObject(Dices.example)
             .environmentObject(Results.example)
+            .environment(\.locale, .init(identifier: "pt-BR"))
 //            .preferredColorScheme(.dark)
         
         SettingsView()

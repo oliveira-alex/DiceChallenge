@@ -69,9 +69,6 @@ class Dices: ObservableObject {
     var numberOfFaces: Int {
         return dices.first!.numberOfFaces
     }
-    var diceOrDices: String {
-        return dices.count > 1 ? "Dices" : "Dice"
-    }
     var maxFaceValueSFSymbolName: String {
         return (numberOfFaces == 6) ? "die.face.6" : "\(numberOfFaces).square"
     }

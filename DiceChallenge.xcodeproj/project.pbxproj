@@ -17,6 +17,8 @@
 		E79F1A032786069400292BD9 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A022786069400292BD9 /* DicesView.swift */; };
 		E79F1A0527861F5100292BD9 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A0427861F5100292BD9 /* ResultsView.swift */; };
 		E79F1A07278628E000292BD9 /* ResultsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A06278628E000292BD9 /* ResultsClass.swift */; };
+		E7F1A30D27A1E521005A7EAC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7F1A30B27A1E521005A7EAC /* InfoPlist.strings */; };
+		E7F1A31027A1E521005A7EAC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7F1A30E27A1E521005A7EAC /* Localizable.strings */; };
 		E7F37FCD27945C2C00739C71 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F37FCC27945C2C00739C71 /* DiceView.swift */; };
 		E7F48BB4278B142D00816112 /* DicesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F48BB3278B142D00816112 /* DicesClass.swift */; };
 /* End PBXBuildFile section */
@@ -34,8 +36,11 @@
 		E79F1A022786069400292BD9 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
 		E79F1A0427861F5100292BD9 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		E79F1A06278628E000292BD9 /* ResultsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsClass.swift; sourceTree = "<group>"; };
+		E7F1A30C27A1E521005A7EAC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E7F1A30F27A1E521005A7EAC /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E7F1A31127A1E5F9005A7EAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E7F1A31227A1E5FD005A7EAC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E7F37FCC27945C2C00739C71 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
-		E7F37FCE279467BF00739C71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E7F48BB3278B142D00816112 /* DicesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,12 +75,12 @@
 		E79F19F3278604E800292BD9 /* DiceChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				E7F37FCE279467BF00739C71 /* Info.plist */,
 				E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */,
 				E7F37FC82798B46C008A31BC /* Model */,
 				E7F37FC62798B3F1008A31BC /* View */,
 				E7F37FC72798B42E008A31BC /* ViewModel */,
 				E79F19F8278604EA00292BD9 /* Assets.xcassets */,
+				E7F1A30A27A1E4D3005A7EAC /* Localization */,
 				E79F19FA278604EA00292BD9 /* Preview Content */,
 			);
 			path = DiceChallenge;
@@ -87,6 +92,15 @@
 				E79F19FB278604EA00292BD9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E7F1A30A27A1E4D3005A7EAC /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E7F1A30E27A1E521005A7EAC /* Localizable.strings */,
+				E7F1A30B27A1E521005A7EAC /* InfoPlist.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		E7F37FC62798B3F1008A31BC /* View */ = {
@@ -161,6 +175,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = E79F19E8278604E800292BD9;
 			productRefGroup = E79F19F2278604E800292BD9 /* Products */;
@@ -178,6 +193,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79F19FC278604EA00292BD9 /* Preview Assets.xcassets in Resources */,
+				E7F1A31027A1E521005A7EAC /* Localizable.strings in Resources */,
+				E7F1A30D27A1E521005A7EAC /* InfoPlist.strings in Resources */,
 				E79F19F9278604EA00292BD9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,11 +221,33 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		E7F1A30B27A1E521005A7EAC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7F1A30C27A1E521005A7EAC /* pt-BR */,
+				E7F1A31127A1E5F9005A7EAC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E7F1A30E27A1E521005A7EAC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7F1A30F27A1E521005A7EAC /* pt-BR */,
+				E7F1A31227A1E5FD005A7EAC /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		E79F19FD278604EA00292BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -270,6 +309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -328,10 +368,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Some Dices.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DiceChallenge/Preview Content\"";
 				DEVELOPMENT_TEAM = 8373G5V95D;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DiceChallenge/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -345,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -363,7 +404,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Some Dices.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DiceChallenge/Preview Content\"";
 				DEVELOPMENT_TEAM = 8373G5V95D;
 				ENABLE_PREVIEWS = YES;
@@ -380,7 +421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

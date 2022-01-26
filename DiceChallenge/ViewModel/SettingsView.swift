@@ -62,7 +62,7 @@ struct SettingsView: View {
                     Spacer()
                 }
                 
-                Picker("Number of dices", selection: $numberOfDiceFaces) {
+                Picker("Number of dice faces", selection: $numberOfDiceFaces) {
                     ForEach(Dice.possibleNumberOfFaces, id: \.self) { numberOfFaces in
                         Text("\(numberOfFaces) faces dice").tag(numberOfFaces)
                     }
@@ -99,6 +99,10 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(Dices.example)
+        
+        SettingsView()
+            .environmentObject(Dices.example)
+            .environment(\.locale, .init(identifier: "pt-BR"))
 //            .preferredColorScheme(.dark)
     }
 }

@@ -24,13 +24,13 @@ struct MyTabView: View {
                         }
                         .tag("Settings")
                 
-                    DicesView()
+                    DicesView(selectedTab: $selectedTab)
                         .tabItem {
                             Image(systemName: "dice.fill")
                         }
                         .tag("Dices")
                 
-                    ResultsView()
+                    ResultsView(selectedTab: $selectedTab)
                         .tabItem {
                             Image(systemName: "list.bullet.rectangle.portrait")
                         }
@@ -56,7 +56,7 @@ struct MyTabView: View {
                     }
                     
                     if selectedTab == "Dices" {
-                        DicesView()
+                        DicesView(selectedTab: $selectedTab)
                             .tabItem {
                                 Image(systemName: "dice.fill")
                             }
@@ -64,7 +64,7 @@ struct MyTabView: View {
                     }
                     
                     if selectedTab == "Results" {
-                        ResultsView()
+                        ResultsView(selectedTab: $selectedTab)
                             .tabItem {
                                 Image(systemName: "list.bullet.rectangle.portrait")
                             }

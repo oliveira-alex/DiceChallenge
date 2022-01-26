@@ -1,0 +1,69 @@
+/* No action required */
+"%lld" = "%lld";
+
+/* No comment provided by engineer. */
+"%lld dice" = "%lld dado";
+
+/* No comment provided by engineer. */
+"%lld dices" = "%lld dados";
+
+/* No comment provided by engineer. */
+"%lld faces dice" = "Dado de %lld faces";
+
+/* No translation required */
+"%lld. " = "%lld. ";
+
+/* No translation required */
+"+" = "+";
+
+/* No translation required */
+"= %@" = "= %@";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancelar";
+
+/* No comment provided by engineer. */
+"Clear" = "Apagar";
+
+/* No comment provided by engineer. */
+"Clear History" = "Apagar Histórico";
+
+/* No comment provided by engineer. */
+"Clear history to enable more dice rolls" = "Para mais rodadas é preciso apagar o histórico";
+
+/* No comment provided by engineer. */
+"History" = "Histórico";
+
+/* No comment provided by engineer. */
+"History Maxed Out" = "Histórico Cheio";
+
+/* No comment provided by engineer. */
+"Later" = "Mais tarde";
+
+/* No comment provided by engineer. */
+"max" = "máx";
+
+/* No comment provided by engineer. */
+"Number of dice faces" = "Número de faces do dado";
+
+/* No comment provided by engineer. */
+"Number of dices" = "Número de dados";
+
+/* No comment provided by engineer. */
+"Quantity" = "Quantidade";
+
+/* No comment provided by engineer. */
+"Roll Dice" = "Rolar Dado";
+
+/* No comment provided by engineer. */
+"Roll Dices" = "Rolar Dados";
+
+/* No comment provided by engineer. */
+"Settings" = "Configurações";
+
+/* No comment provided by engineer. */
+"This will erase all previous results" = "Isso apagará todos os resultados anteriores";
+
+/* No comment provided by engineer. */
+"Type" = "Tipo";
+
