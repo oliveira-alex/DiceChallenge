@@ -15,6 +15,7 @@ struct ResultsView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            #if !os(watchOS)
             HStack {
                 Text("History")
                     .font(.largeTitle)
@@ -27,20 +28,9 @@ struct ResultsView: View {
                     isShowingAlert.toggle()
                 }
                 .disabled(results.isEmpty)
-                .alert("Clear History", isPresented: $isShowingAlert) {
-                    Button("Cancel", role: .cancel) { }
-                    
-                    Button("Clear", role: .destructive) {
-                        results.removeAll()
-                        dices.resetAll()
-                        withAnimation { selectedTab = "Dices" }
-                    }
-                } message: {
-                    Text("This will erase all previous results")
-                }
             }
             .padding([.vertical])
-            
+            #endif
             List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
                     Text(String(localized: "\(resultIndex + 1). ", comment: "No translation required"))
@@ -70,13 +60,31 @@ struct ResultsView: View {
             .clipShape(
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
             )
-
+            .alert("Clear History", isPresented: $isShowingAlert) {
+                Button("Cancel", role: .cancel) { }
+                
+                Button("Clear", role: .destructive) {
+                    results.removeAll()
+                    dices.resetAll()
+                    withAnimation { selectedTab = "Dices" }
+                }
+            } message: {
+                Text("This will erase all previous results")
+            }
+            .onTapGesture {
+                print("tap")
+                isShowingAlert.toggle()
+            }
+            
+            #if !os(watchOS)
             Spacer(minLength: 60)
+            #endif
         }
+        #if !os(watchOS)
         .padding(.horizontal)
+        #endif
     }
 }
-
 
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {

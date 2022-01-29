@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var dices: Dices
-    @State private var numberOfDices = 1
-    @State private var numberOfDiceFaces = 6
+    @EnvironmentObject var settings: Settings
     
     var body: some View {
         VStack(spacing: 0) {
+            #if !os(watchOS)
             HStack {
                 Text("Settings")
                     .font(.largeTitle)
@@ -22,8 +22,10 @@ struct SettingsView: View {
                     
                 Spacer()
             }
+            #endif
             
             VStack(spacing: 10) {
+                #if !os(watchOS)
                 HStack {
                     Text("Quantity")
                         .font(.body)
@@ -33,7 +35,7 @@ struct SettingsView: View {
                     Spacer()
                 }
 
-                Picker("Number of dices", selection: $numberOfDices) {
+                Picker("Number of dices", selection: $settings.numberOfDices) {
                     ForEach(1..<5) { numberOfDices in
                         switch numberOfDices {
                         case 1:
@@ -44,6 +46,7 @@ struct SettingsView: View {
                     }
                 }
                 .pickerStyle(.wheel)
+                .labelsHidden()
                 .background(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .fill(Color.gray.opacity(0.25))
@@ -61,37 +64,36 @@ struct SettingsView: View {
                     
                     Spacer()
                 }
-                
-                Picker("Number of dice faces", selection: $numberOfDiceFaces) {
+                #endif
+                Picker("Number of dice faces", selection: $settings.numberOfDiceFaces) {
                     ForEach(Dice.possibleNumberOfFaces, id: \.self) { numberOfFaces in
-                        Text("\(numberOfFaces) faces dice").tag(numberOfFaces)
+                        Text("\(numberOfFaces)-sided dice").tag(numberOfFaces)
                     }
                 }
                 .pickerStyle(.wheel)
+                .labelsHidden()
+                #if os(watchOS)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(lineWidth: 3)
+                        .foregroundColor(.black)
+                )
+                #endif
                 .background(
-                    RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .fill(Color.gray.opacity(0.25))
                 )
                 .padding(.horizontal)
             }
-            
+            #if !os(watchOS)
             Spacer()
+            #endif
         }
         .padding(.vertical)
         .onAppear {
-            numberOfDices = dices.count
-            numberOfDiceFaces = dices.numberOfFaces
+            settings.numberOfDices = dices.count
+            settings.numberOfDiceFaces = dices.numberOfFaces
         }
-        .onChange(of: numberOfDiceFaces, perform: { newNumberOfDiceFaces in
-            if newNumberOfDiceFaces != dices.numberOfFaces {
-                dices.setNumberOfDiceFaces(to: newNumberOfDiceFaces)
-            }
-        })
-        .onChange(of: numberOfDices, perform: { newNumberOfDices in
-            if newNumberOfDices != dices.count {
-                dices.setNumberOfDices(to: newNumberOfDices)
-            }
-        })
     }
 }
 
@@ -99,10 +101,12 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(Dices.example)
+            .environmentObject(Settings())
         
         SettingsView()
             .environmentObject(Dices.example)
+            .environmentObject(Settings())
             .environment(\.locale, .init(identifier: "pt-BR"))
-//            .preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }

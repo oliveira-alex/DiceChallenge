@@ -10,6 +10,7 @@ import SwiftUI
 struct MyTabView: View {
     @EnvironmentObject var dices: Dices
     @EnvironmentObject var results: Results
+    @EnvironmentObject var settings: Settings
     @Binding var selectedTab: String
     @Binding var isShowingFullTabView: Bool
     @Binding var pageTabViewIndexDisplayMode: PageTabViewStyle.IndexDisplayMode
@@ -38,11 +39,14 @@ struct MyTabView: View {
                 }
                 .environmentObject(dices)
                 .environmentObject(results)
+                .environmentObject(settings)
                 .tabViewStyle(.page(indexDisplayMode: pageTabViewIndexDisplayMode))
+                #if os(iOS)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .onAppear {
                     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "pageIndicatorTintColor")
                 }
+                #endif
             }
         } else {
             VStack {
@@ -73,9 +77,12 @@ struct MyTabView: View {
                 }
                 .environmentObject(dices)
                 .environmentObject(results)
+                .environmentObject(settings)
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .onAppear {
+                    #if os(iOS)
                     UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(named: "pageIndicatorTintColor")
+                    #endif
                 }
             }
 
@@ -88,5 +95,6 @@ struct MyTabView_Previews: PreviewProvider {
         MyTabView(selectedTab: .constant("Dices"), isShowingFullTabView: .constant(false), pageTabViewIndexDisplayMode: .constant(.always))
             .environmentObject(Dices.example)
             .environmentObject(Results.example)
+            .environmentObject(Settings())
     }
 }

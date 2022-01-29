@@ -10,6 +10,27 @@
 		E72D52AC27879EF600C5B1EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AB27879EF600C5B1EF /* SettingsView.swift */; };
 		E72D52AE2787AEA500C5B1EF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AD2787AEA500C5B1EF /* CustomButton.swift */; };
 		E734E446279F67F200CFB53A /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734E445279F67F200CFB53A /* MyTabView.swift */; };
+		E74AE46C27A478B5003ECE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74AE46B27A478B5003ECE8F /* Assets.xcassets */; };
+		E74AE47227A478B5003ECE8F /* Watch Dice WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E74AE47127A478B5003ECE8F /* Watch Dice WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E74AE47B27A478B5003ECE8F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AE47A27A478B5003ECE8F /* NotificationController.swift */; };
+		E74AE47D27A478B6003ECE8F /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AE47C27A478B6003ECE8F /* NotificationView.swift */; };
+		E74AE47F27A478B6003ECE8F /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74AE47E27A478B6003ECE8F /* ComplicationController.swift */; };
+		E74AE48127A478B6003ECE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74AE48027A478B6003ECE8F /* Assets.xcassets */; };
+		E74AE48427A478B6003ECE8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74AE48327A478B6003ECE8F /* Preview Assets.xcassets */; };
+		E74AE48927A478B6003ECE8F /* Watch Dice.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E74AE46927A478B5003ECE8F /* Watch Dice.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E74AE49227A478EB003ECE8F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AD2787AEA500C5B1EF /* CustomButton.swift */; };
+		E74AE49327A478EB003ECE8F /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F37FCC27945C2C00739C71 /* DiceView.swift */; };
+		E74AE49427A478EB003ECE8F /* ResultsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A06278628E000292BD9 /* ResultsClass.swift */; };
+		E74AE49627A478EB003ECE8F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72D52AB27879EF600C5B1EF /* SettingsView.swift */; };
+		E74AE49727A478EB003ECE8F /* DiceChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */; };
+		E74AE49827A478EB003ECE8F /* DicesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F48BB3278B142D00816112 /* DicesClass.swift */; };
+		E74AE49927A478EB003ECE8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F6278604E800292BD9 /* ContentView.swift */; };
+		E74AE49A27A478EB003ECE8F /* MyTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E734E445279F67F200CFB53A /* MyTabView.swift */; };
+		E74AE49B27A478EB003ECE8F /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A0427861F5100292BD9 /* ResultsView.swift */; };
+		E74AE49C27A48097003ECE8F /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F1A022786069400292BD9 /* DicesView.swift */; };
+		E759AB2F27A4917500B68A97 /* WatchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E759AB2E27A4917500B68A97 /* WatchContentView.swift */; };
+		E78483E927A4D7E100D4335A /* SettingsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78483E827A4D7E100D4335A /* SettingsClass.swift */; };
+		E78483EA27A4D7E100D4335A /* SettingsClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78483E827A4D7E100D4335A /* SettingsClass.swift */; };
 		E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */; };
 		E79F19F7278604E800292BD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79F19F6278604E800292BD9 /* ContentView.swift */; };
 		E79F19F9278604EA00292BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E79F19F8278604EA00292BD9 /* Assets.xcassets */; };
@@ -23,11 +44,65 @@
 		E7F48BB4278B142D00816112 /* DicesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F48BB3278B142D00816112 /* DicesClass.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E74AE47327A478B5003ECE8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79F19E9278604E800292BD9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E74AE47027A478B5003ECE8F;
+			remoteInfo = "Watch Dice WatchKit Extension";
+		};
+		E74AE48727A478B6003ECE8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E79F19E9278604E800292BD9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E74AE46827A478B5003ECE8F;
+			remoteInfo = "Watch Dice";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E74AE48A27A478B6003ECE8F /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E74AE48927A478B6003ECE8F /* Watch Dice.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E74AE48D27A478B6003ECE8F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E74AE47227A478B5003ECE8F /* Watch Dice WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E72D52AB27879EF600C5B1EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E72D52AD2787AEA500C5B1EF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E734E445279F67F200CFB53A /* MyTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyTabView.swift; path = DiceChallenge/ViewModel/MyTabView.swift; sourceTree = SOURCE_ROOT; };
+		E74AE46927A478B5003ECE8F /* Watch Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E74AE46B27A478B5003ECE8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E74AE47127A478B5003ECE8F /* Watch Dice WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch Dice WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E74AE47A27A478B5003ECE8F /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E74AE47C27A478B6003ECE8F /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		E74AE47E27A478B6003ECE8F /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		E74AE48027A478B6003ECE8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E74AE48327A478B6003ECE8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E74AE48527A478B6003ECE8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E74AE48627A478B6003ECE8F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E759AB2E27A4917500B68A97 /* WatchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchContentView.swift; sourceTree = "<group>"; };
 		E770DA522795AE440057B7BF /* Some Dices.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Some Dices.entitlements"; sourceTree = "<group>"; };
+		E78483E827A4D7E100D4335A /* SettingsClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsClass.swift; path = DiceChallenge/Model/SettingsClass.swift; sourceTree = SOURCE_ROOT; };
 		E79F19F1278604E800292BD9 /* Some Dices.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Some Dices.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79F19F4278604E800292BD9 /* DiceChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceChallengeApp.swift; sourceTree = "<group>"; };
 		E79F19F6278604E800292BD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +120,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E74AE46E27A478B5003ECE8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E79F19EE278604E800292BD9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -55,11 +137,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E74AE46A27A478B5003ECE8F /* Watch Dice */ = {
+			isa = PBXGroup;
+			children = (
+				E74AE46B27A478B5003ECE8F /* Assets.xcassets */,
+			);
+			path = "Watch Dice";
+			sourceTree = "<group>";
+		};
+		E74AE47527A478B5003ECE8F /* Watch Dice WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E759AB2E27A4917500B68A97 /* WatchContentView.swift */,
+				E74AE47A27A478B5003ECE8F /* NotificationController.swift */,
+				E74AE47C27A478B6003ECE8F /* NotificationView.swift */,
+				E74AE47E27A478B6003ECE8F /* ComplicationController.swift */,
+				E74AE48027A478B6003ECE8F /* Assets.xcassets */,
+				E74AE48527A478B6003ECE8F /* Info.plist */,
+				E74AE48627A478B6003ECE8F /* PushNotificationPayload.apns */,
+				E74AE48227A478B6003ECE8F /* Preview Content */,
+			);
+			path = "Watch Dice WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		E74AE48227A478B6003ECE8F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E74AE48327A478B6003ECE8F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		E79F19E8278604E800292BD9 = {
 			isa = PBXGroup;
 			children = (
 				E770DA522795AE440057B7BF /* Some Dices.entitlements */,
 				E79F19F3278604E800292BD9 /* DiceChallenge */,
+				E74AE46A27A478B5003ECE8F /* Watch Dice */,
+				E74AE47527A478B5003ECE8F /* Watch Dice WatchKit Extension */,
 				E79F19F2278604E800292BD9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				E79F19F1278604E800292BD9 /* Some Dices.app */,
+				E74AE46927A478B5003ECE8F /* Watch Dice.app */,
+				E74AE47127A478B5003ECE8F /* Watch Dice WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +246,7 @@
 			children = (
 				E7F48BB3278B142D00816112 /* DicesClass.swift */,
 				E79F1A06278628E000292BD9 /* ResultsClass.swift */,
+				E78483E827A4D7E100D4335A /* SettingsClass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +254,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E74AE46827A478B5003ECE8F /* Watch Dice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E74AE49127A478B6003ECE8F /* Build configuration list for PBXNativeTarget "Watch Dice" */;
+			buildPhases = (
+				E74AE46727A478B5003ECE8F /* Resources */,
+				E74AE48D27A478B6003ECE8F /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E74AE47427A478B5003ECE8F /* PBXTargetDependency */,
+			);
+			name = "Watch Dice";
+			productName = "Watch Dice";
+			productReference = E74AE46927A478B5003ECE8F /* Watch Dice.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E74AE47027A478B5003ECE8F /* Watch Dice WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E74AE49027A478B6003ECE8F /* Build configuration list for PBXNativeTarget "Watch Dice WatchKit Extension" */;
+			buildPhases = (
+				E74AE46D27A478B5003ECE8F /* Sources */,
+				E74AE46E27A478B5003ECE8F /* Frameworks */,
+				E74AE46F27A478B5003ECE8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Watch Dice WatchKit Extension";
+			productName = "Watch Dice WatchKit Extension";
+			productReference = E74AE47127A478B5003ECE8F /* Watch Dice WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		E79F19F0278604E800292BD9 /* Some Dices */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E79F19FF278604EA00292BD9 /* Build configuration list for PBXNativeTarget "Some Dices" */;
@@ -143,10 +295,12 @@
 				E79F19ED278604E800292BD9 /* Sources */,
 				E79F19EE278604E800292BD9 /* Frameworks */,
 				E79F19EF278604E800292BD9 /* Resources */,
+				E74AE48A27A478B6003ECE8F /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E74AE48827A478B6003ECE8F /* PBXTargetDependency */,
 			);
 			name = "Some Dices";
 			productName = DiceChallenge;
@@ -163,6 +317,12 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					E74AE46827A478B5003ECE8F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					E74AE47027A478B5003ECE8F = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					E79F19F0278604E800292BD9 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -183,11 +343,30 @@
 			projectRoot = "";
 			targets = (
 				E79F19F0278604E800292BD9 /* Some Dices */,
+				E74AE46827A478B5003ECE8F /* Watch Dice */,
+				E74AE47027A478B5003ECE8F /* Watch Dice WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E74AE46727A478B5003ECE8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E74AE46C27A478B5003ECE8F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E74AE46F27A478B5003ECE8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E74AE48427A478B6003ECE8F /* Preview Assets.xcassets in Resources */,
+				E74AE48127A478B6003ECE8F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E79F19EF278604E800292BD9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +381,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E74AE46D27A478B5003ECE8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E759AB2F27A4917500B68A97 /* WatchContentView.swift in Sources */,
+				E74AE47B27A478B5003ECE8F /* NotificationController.swift in Sources */,
+				E74AE49327A478EB003ECE8F /* DiceView.swift in Sources */,
+				E74AE49927A478EB003ECE8F /* ContentView.swift in Sources */,
+				E74AE49C27A48097003ECE8F /* DicesView.swift in Sources */,
+				E74AE49627A478EB003ECE8F /* SettingsView.swift in Sources */,
+				E74AE49727A478EB003ECE8F /* DiceChallengeApp.swift in Sources */,
+				E74AE47F27A478B6003ECE8F /* ComplicationController.swift in Sources */,
+				E74AE49A27A478EB003ECE8F /* MyTabView.swift in Sources */,
+				E74AE49427A478EB003ECE8F /* ResultsClass.swift in Sources */,
+				E78483EA27A4D7E100D4335A /* SettingsClass.swift in Sources */,
+				E74AE47D27A478B6003ECE8F /* NotificationView.swift in Sources */,
+				E74AE49B27A478EB003ECE8F /* ResultsView.swift in Sources */,
+				E74AE49827A478EB003ECE8F /* DicesClass.swift in Sources */,
+				E74AE49227A478EB003ECE8F /* CustomButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E79F19ED278604E800292BD9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -216,10 +417,25 @@
 				E7F48BB4278B142D00816112 /* DicesClass.swift in Sources */,
 				E79F1A032786069400292BD9 /* DicesView.swift in Sources */,
 				E79F19F5278604E800292BD9 /* DiceChallengeApp.swift in Sources */,
+				E78483E927A4D7E100D4335A /* SettingsClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E74AE47427A478B5003ECE8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E74AE47027A478B5003ECE8F /* Watch Dice WatchKit Extension */;
+			targetProxy = E74AE47327A478B5003ECE8F /* PBXContainerItemProxy */;
+		};
+		E74AE48827A478B6003ECE8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = E74AE46827A478B5003ECE8F /* Watch Dice */;
+			targetProxy = E74AE48727A478B6003ECE8F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7F1A30B27A1E521005A7EAC /* InfoPlist.strings */ = {
@@ -243,6 +459,120 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E74AE48B27A478B6003ECE8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8373G5V95D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Watch_Dice_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Watch Dice";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alexoliveira.SomeDices;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		E74AE48C27A478B6003ECE8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8373G5V95D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = Watch_Dice_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "Watch Dice";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.alexoliveira.SomeDices;
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
+		E74AE48E27A478B6003ECE8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Watch Dice WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 8373G5V95D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch Dice WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Watch Dice WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Watch_Dice_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices.watchkitapp.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		E74AE48F27A478B6003ECE8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Watch Dice WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 8373G5V95D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Watch Dice WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Watch Dice WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Watch_Dice_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices.watchkitapp.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Release;
+		};
 		E79F19FD278604EA00292BD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -386,7 +716,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -421,7 +751,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexoliveira.SomeDices;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -435,6 +765,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E74AE49027A478B6003ECE8F /* Build configuration list for PBXNativeTarget "Watch Dice WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E74AE48E27A478B6003ECE8F /* Debug */,
+				E74AE48F27A478B6003ECE8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E74AE49127A478B6003ECE8F /* Build configuration list for PBXNativeTarget "Watch Dice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E74AE48B27A478B6003ECE8F /* Debug */,
+				E74AE48C27A478B6003ECE8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		E79F19EC278604E800292BD9 /* Build configuration list for PBXProject "DiceChallenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

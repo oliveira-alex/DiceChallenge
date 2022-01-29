@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     var results = Results()
     var dices = Dices()
+    var settings = Settings()
     
     @State private var isShowingFullTabView = true
     @State private var selectedTab = "Dices"
@@ -40,6 +41,7 @@ struct ContentView: View {
                 }
                 .environmentObject(dices)
                 .environmentObject(results)
+                .environmentObject(settings)
         }
     }
 }
@@ -49,6 +51,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(results: .example, dices: .threeDices)
             .environmentObject(Dices.example)
             .environmentObject(Results.example)
+            .environmentObject(Settings())
         //            .preferredColorScheme(.dark)
     }
 }

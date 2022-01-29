@@ -12,13 +12,13 @@ struct DiceChallengeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                #if targetEnvironment(macCatalyst)
                 .onReceive(NotificationCenter.default.publisher(for: UIScene.willConnectNotification)) { _ in
-                    #if targetEnvironment(macCatalyst)
                     UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.forEach { windowScene in
                         windowScene.sizeRestrictions?.minimumSize = CGSize(width: 640, height: 1020)
                     }
-                    #endif
                 }
+                #endif
         }
     }
 }
