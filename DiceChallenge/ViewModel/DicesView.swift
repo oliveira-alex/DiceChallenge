@@ -20,28 +20,10 @@ struct DicesView: View {
     #endif
     @State private var isShowingAlert = false
     
-    @State private var crownValue = 0.0 {
-        didSet {
-            if crownValue > oldValue {
-                if !results.maxedOut && !dices.areRolling {
-                    rollDices()
-                }
-            }
-        }
-    }
+    @State private var crownValue = 0.0
     
     var body: some View {
-        #if os(watchOS)
-        let crownBinding = Binding (
-            get: {
-                return crownValue
-            }, set: { newValue in
-                crownValue = newValue
-            }
-        )
-        #endif
-        
-        return GeometryReader { geometry in
+        GeometryReader { geometry in
             let screenWidth = geometry.size.width
             let screenHeight = geometry.size.height
             let frameAspectRatio =  screenWidth/screenHeight
@@ -118,7 +100,14 @@ struct DicesView: View {
                     )
                 #if os(watchOS)
                     .focusable(true)
-                    .digitalCrownRotation(crownBinding)
+                    .digitalCrownRotation($crownValue)
+                    .onChange(of: crownValue) { [crownValue] newValue in
+                        if newValue > crownValue {
+                            if !results.maxedOut && !dices.areRolling {
+                                rollDices()
+                            }
+                        }
+                    }
                 #endif
                 
                 #if !os(watchOS)
