@@ -14,15 +14,34 @@ struct DicesView: View {
     @EnvironmentObject var settings: Settings
     @Binding var selectedTab: String
 
-    @State private var isShowingSettings = false
     private var currentResult: Result { Result(from: dices) }
     #if os(iOS)
     @State private var feedback = UINotificationFeedbackGenerator()
     #endif
     @State private var isShowingAlert = false
     
+    @State private var crownValue = 0.0 {
+        didSet {
+            if crownValue > oldValue {
+                if !results.maxedOut && !dices.areRolling {
+                    rollDices()
+                }
+            }
+        }
+    }
+    
     var body: some View {
-        GeometryReader { geometry in
+        #if os(watchOS)
+        let crownBinding = Binding (
+            get: {
+                return crownValue
+            }, set: { newValue in
+                crownValue = newValue
+            }
+        )
+        #endif
+        
+        return GeometryReader { geometry in
             let screenWidth = geometry.size.width
             let screenHeight = geometry.size.height
             let frameAspectRatio =  screenWidth/screenHeight
@@ -97,6 +116,10 @@ struct DicesView: View {
                         RoundedRectangle(cornerRadius: availableFrameWidth/7)
                             .fill(Color.gray.opacity(0.25))
                     )
+                #if os(watchOS)
+                    .focusable(true)
+                    .digitalCrownRotation(crownBinding)
+                #endif
                 
                 #if !os(watchOS)
                 Spacer(minLength: 30)

@@ -56,7 +56,7 @@ struct ResultsView: View {
                 .listRowBackground(Color.clear)
             }
             .listStyle(PlainListStyle())
-            .background(Color.gray.opacity(0.25))
+            .background(Color.gray.opacity(0.2))
             .clipShape(
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
             )

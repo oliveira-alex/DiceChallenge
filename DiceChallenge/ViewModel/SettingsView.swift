@@ -49,7 +49,7 @@ struct SettingsView: View {
                 .labelsHidden()
                 .background(
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
-                        .fill(Color.gray.opacity(0.25))
+                        .fill(Color.gray.opacity(0.2))
                 )
                 .padding(.horizontal)
                 
@@ -76,12 +76,12 @@ struct SettingsView: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(lineWidth: 3)
-                        .foregroundColor(.black)
+                        .foregroundColor(.init(.sRGB, white: 0.1, opacity: 1))
                 )
                 #endif
                 .background(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color.gray.opacity(0.25))
+                        .fill(Color.gray.opacity(0.2))
                 )
                 .padding(.horizontal)
             }
