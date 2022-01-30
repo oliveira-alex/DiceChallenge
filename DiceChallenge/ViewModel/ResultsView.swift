@@ -45,12 +45,11 @@ struct ResultsView: View {
                     
                     ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
                         if diceIndex != 0 { Text(String(localized: "+", comment: "No translation required")) }
-                        
                         Image(systemName: faceUpImageSFSymbolName)
                     }
-                    
+                    #if !os(watchOS)
                     Text(String(localized: "= \(result.total)", comment: "No translation required"))
-                    
+                    #endif
                     Spacer()
                     
                     VStack(spacing: 0) {
