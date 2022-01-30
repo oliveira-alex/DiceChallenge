@@ -4,7 +4,9 @@
 //
 //  Created by Alex Oliveira on 05/01/2022.
 //
-
+#if os(watchOS)
+import WatchKit
+#endif
 import SwiftUI
 
 struct DicesView: View {
@@ -15,8 +17,10 @@ struct DicesView: View {
     @Binding var selectedTab: String
 
     private var currentResult: Result { Result(from: dices) }
-    #if os(iOS)
-    @State private var feedback = UINotificationFeedbackGenerator()
+    #if os(watchOS)
+    @State private var feedback = WKInterfaceDevice.current()
+    #elseif os(iOS)
+    @State private var feedback = UIImpactFeedbackGenerator(style: .light)
     #endif
     @State private var isShowingAlert = false
     
@@ -172,8 +176,10 @@ struct DicesView: View {
     func rollDices() {
         dices.rollAll {
             if dices.areRolling {
-                #if os(iOS)
-                feedback.notificationOccurred(.success)
+                #if os(watchOS)
+                feedback.play(.click)
+                #elseif os(iOS)
+                feedback.impactOccurred()
                 #endif
             } else {
                 results.append(currentResult)
