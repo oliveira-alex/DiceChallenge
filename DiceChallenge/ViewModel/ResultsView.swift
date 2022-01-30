@@ -38,9 +38,9 @@ struct ResultsView: View {
             .padding(.top, 50)
             #endif
             
-            List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
+            List(Array(results.all.reversed().enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
-                    Text(String(localized: "\(resultIndex + 1). ", comment: "No translation required"))
+                    Text(String(localized: "\(results.count - resultIndex). ", comment: "No translation required"))
                         .frame(width: 26, alignment: .leading)
                     
                     ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in

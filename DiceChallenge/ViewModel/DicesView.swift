@@ -39,10 +39,10 @@ struct DicesView: View {
             
             VStack {
                 #if !os(watchOS)
-                Button {
-                    withAnimation { selectedTab = "Settings" }
-                } label: {
-                    HStack {
+                HStack {
+                    Button {
+                        withAnimation { selectedTab = "Settings" }
+                    } label: {
                         HStack(alignment: .top, spacing: 3) {
                             Text(String(localized: "\(dices.count)", comment: "No action required"))
                                 .font(.title)
@@ -63,14 +63,18 @@ struct DicesView: View {
                     Spacer()
                 }
                 
-                Text(dices.areRolling ? "Total" : currentResult.total)
-                    .font(.largeTitle)
-                    .background(
-                        Circle()
-                            .fill(Color.primary)
-                            .frame(width: 80, height: 80)
-                    )
-                    .foregroundColor((colorScheme == .light) ? .white : .black)
+                Button {
+                    withAnimation { selectedTab = "Results" }
+                } label: {
+                    Text(dices.areRolling ? "Total" : currentResult.total)
+                        .font(.largeTitle)
+                        .background(
+                            Circle()
+                                .fill(Color.primary)
+                                .frame(width: 80, height: 80)
+                        )
+                        .foregroundColor((colorScheme == .light) ? .white : .black)
+                }
                 
                 Spacer(minLength: 30)
                 #endif
@@ -112,7 +116,22 @@ struct DicesView: View {
                             }
                         }
                     }
+                    .onTapGesture {
+                        if !results.maxedOut && !dices.areRolling {
+                            rollDices()
+                        }
+                    }
                 #endif
+                    .gesture (
+                        DragGesture(minimumDistance: 50, coordinateSpace: .local)
+                            .onEnded { dragAmount in
+                                if !results.maxedOut && !dices.areRolling {
+                                    if dragAmount.translation.height < 0 {
+                                        rollDices()
+                                    }
+                                }
+                            }
+                    )
                 
                 #if !os(watchOS)
                 Spacer(minLength: 30)
@@ -144,23 +163,6 @@ struct DicesView: View {
             } message: {
                 Text("Clear history to enable more dice rolls")
             }
-            #if os(watchOS)
-            .onTapGesture {
-                if !results.maxedOut && !dices.areRolling {
-                    rollDices()
-                }
-            }
-            #endif
-            .gesture (
-                DragGesture(minimumDistance: 50, coordinateSpace: .local)
-                    .onEnded { dragAmount in
-                        if !results.maxedOut && !dices.areRolling {
-                            if dragAmount.translation.height < 0 {
-                                rollDices()
-                            }
-                        }
-                    }
-            )
             .onAppear {
                 if settings.numberOfDiceFaces != dices.numberOfFaces {
                     dices.setNumberOfDiceFaces(to: settings.numberOfDiceFaces)
@@ -197,6 +199,7 @@ struct DicesView_Previews: PreviewProvider {
         DicesView(selectedTab: .constant("Dices"))
             .environmentObject(Dices.threeDices)
             .environmentObject(Results.example)
+            .environmentObject(Settings())
 //            .preferredColorScheme(.dark)
     }
 }
