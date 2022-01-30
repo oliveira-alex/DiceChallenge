@@ -15,22 +15,29 @@ struct ResultsView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            #if !os(watchOS)
-            HStack {
+            HStack(alignment: .top) {
                 Text("History")
+                    #if os(watchOS)
+                    .font(.title3)
+                    #else
                     .font(.largeTitle)
+                    #endif
                     .fontWeight(.bold)
-                    .padding(.vertical)
+                    .padding(.bottom)
                 
                 Spacer()
                 
+                #if !os(watchOS)
                 CustomToolbarButton(title: "Clear") {
                     isShowingAlert.toggle()
                 }
                 .disabled(results.isEmpty)
+                #endif
             }
-            .padding([.vertical])
+            #if !os(watchOS)
+            .padding(.top, 50)
             #endif
+            
             List(Array(results.all.enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
                     Text(String(localized: "\(resultIndex + 1). ", comment: "No translation required"))
@@ -72,7 +79,6 @@ struct ResultsView: View {
                 Text("This will erase all previous results")
             }
             .onTapGesture {
-                print("tap")
                 isShowingAlert.toggle()
             }
             
@@ -80,9 +86,7 @@ struct ResultsView: View {
             Spacer(minLength: 60)
             #endif
         }
-        #if !os(watchOS)
         .padding(.horizontal)
-        #endif
     }
 }
 
@@ -94,8 +98,9 @@ struct ResultsView_Previews: PreviewProvider {
             .environment(\.locale, .init(identifier: "pt-BR"))
 //            .preferredColorScheme(.dark)
         
-        SettingsView()
-            .environmentObject(Dices.example)
+//        SettingsView()
+//            .environmentObject(Dices.example)
+//            .environmentObject(Settings())
 //            .preferredColorScheme(.dark)
     }
 }

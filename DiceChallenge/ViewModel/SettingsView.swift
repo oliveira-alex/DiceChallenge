@@ -13,24 +13,27 @@ struct SettingsView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            #if !os(watchOS)
             HStack {
                 Text("Settings")
+                    #if os(watchOS)
+                    .font(.title3)
+                    #else
                     .font(.largeTitle)
+                    #endif
                     .fontWeight(.bold)
-                    .padding()
+                    .padding(.bottom)
                     
                 Spacer()
             }
+            #if !os(watchOS)
+            .padding(.top, 50)
             #endif
             
             VStack(spacing: 10) {
                 #if !os(watchOS)
                 HStack {
                     Text("Quantity")
-                        .font(.body)
                         .foregroundColor(.gray)
-                        .padding(.horizontal)
                     
                     Spacer()
                 }
@@ -51,20 +54,17 @@ struct SettingsView: View {
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .fill(Color.gray.opacity(0.2))
                 )
-                .padding(.horizontal)
                 
                 Spacer()
                     .frame(height: 15)
+                #endif
                 
                 HStack {
                     Text("Type")
-                        .font(.body)
                         .foregroundColor(.gray)
-                        .padding(.horizontal)
                     
                     Spacer()
                 }
-                #endif
                 Picker("Number of dice faces", selection: $settings.numberOfDiceFaces) {
                     ForEach(Dice.possibleNumberOfFaces, id: \.self) { numberOfFaces in
                         Text("\(numberOfFaces)-sided dice").tag(numberOfFaces)
@@ -72,6 +72,10 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.wheel)
                 .labelsHidden()
+                .background(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(Color.gray.opacity(0.2))
+                )
                 #if os(watchOS)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -79,17 +83,11 @@ struct SettingsView: View {
                         .foregroundColor(.init(.sRGB, white: 0.1, opacity: 1))
                 )
                 #endif
-                .background(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color.gray.opacity(0.2))
-                )
-                .padding(.horizontal)
             }
-            #if !os(watchOS)
+
             Spacer()
-            #endif
         }
-        .padding(.vertical)
+        .padding([.horizontal,.bottom])
         .onAppear {
             settings.numberOfDices = dices.count
             settings.numberOfDiceFaces = dices.numberOfFaces
