@@ -23,20 +23,20 @@ struct DicesView: View {
     @State private var feedback = UIImpactFeedbackGenerator(style: .light)
     #endif
     @State private var isShowingAlert = false
-    
+
     @State private var crownValue = 0.0
-    
+
     var body: some View {
         GeometryReader { geometry in
             let screenWidth = geometry.size.width
             let screenHeight = geometry.size.height
-            let frameAspectRatio =  screenWidth/screenHeight
+            let frameAspectRatio = screenWidth / screenHeight
             #if os(watchOS)
             let availableFrameWidth = screenWidth
             #else
-            let availableFrameWidth = (frameAspectRatio > 0.65) ? 0.65*screenHeight : screenWidth
+            let availableFrameWidth = (frameAspectRatio > 0.65) ? 0.65 * screenHeight : screenWidth
             #endif
-            
+
             VStack {
                 #if !os(watchOS)
                 HStack {
@@ -46,7 +46,7 @@ struct DicesView: View {
                         HStack(alignment: .top, spacing: 3) {
                             Text(String(localized: "\(dices.count)", comment: "No action required"))
                                 .font(.title)
-                                
+
                             VStack(spacing: 0) {
                                 Image(systemName: dices.maxFaceValueSFSymbolName)
                                     .resizable()
@@ -62,7 +62,7 @@ struct DicesView: View {
 
                     Spacer()
                 }
-                
+
                 Button {
                     withAnimation { selectedTab = "Results" }
                 } label: {
@@ -75,12 +75,12 @@ struct DicesView: View {
                         )
                         .foregroundColor((colorScheme == .light) ? .white : .black)
                 }
-                
+
                 Spacer(minLength: 30)
                 #endif
-                
-                VStack(spacing: 0.06*availableFrameWidth) {
-                    HStack(spacing: 0.06*availableFrameWidth) {
+
+                VStack(spacing: 0.06 * availableFrameWidth) {
+                    HStack(spacing: 0.06 * availableFrameWidth) {
                         DiceView(systemName: dices.all[0].faceUpImageSFSymbolName)
 
                         if dices.count > 1 {
@@ -93,17 +93,17 @@ struct DicesView: View {
                             if dices.count > 2 {
                                 DiceView(systemName: dices.all[2].faceUpImageSFSymbolName)
                             }
-                            
+
                             if dices.count > 3 {
                                 DiceView(systemName: dices.all[3].faceUpImageSFSymbolName)
                             }
                         }
                     }
                 }
-                .padding(0.06*availableFrameWidth)
-                .frame(width: 0.9*availableFrameWidth, height: 0.9*availableFrameWidth)
+                .padding(0.06 * availableFrameWidth)
+                .frame(width: 0.9 * availableFrameWidth, height: 0.9 * availableFrameWidth)
                     .background(
-                        RoundedRectangle(cornerRadius: availableFrameWidth/7)
+                        RoundedRectangle(cornerRadius: availableFrameWidth / 7)
                             .fill(Color.gray.opacity(0.25))
                     )
                 #if os(watchOS)
@@ -122,7 +122,7 @@ struct DicesView: View {
                         }
                     }
                 #endif
-                    .gesture (
+                    .gesture(
                         DragGesture(minimumDistance: 50, coordinateSpace: .local)
                             .onEnded { dragAmount in
                                 if !results.maxedOut && !dices.areRolling {
@@ -132,10 +132,10 @@ struct DicesView: View {
                                 }
                             }
                     )
-                
+
                 #if !os(watchOS)
                 Spacer(minLength: 30)
-                
+
                 Button(action: rollDices) {
                     ((dices.count > 1) ? Text("Roll Dices") : Text("Roll Dice"))
                         .font(.title2)
@@ -147,7 +147,7 @@ struct DicesView: View {
                         .foregroundColor(.white)
                 }
                 .disabled(results.maxedOut || dices.areRolling)
-                
+
                 Spacer(minLength: 93)
                 #endif
             }
@@ -173,8 +173,7 @@ struct DicesView: View {
             }
         }
     }
-        
-    
+
     func rollDices() {
         dices.rollAll {
             if dices.areRolling {
@@ -185,7 +184,7 @@ struct DicesView: View {
                 #endif
             } else {
                 results.append(currentResult)
-                
+
                 if results.maxedOut {
                     isShowingAlert.toggle()
                 }

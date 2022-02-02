@@ -8,7 +8,7 @@
 "%lld dices" = "%lld dices";
 
 /* No comment provided by engineer. */
-"%lld faces dice" = "%lld faces dice";
+"%lld-sided dice" = "%lld-sided dice";
 
 /* No translation required */
 "%lld. " = "%lld. ";

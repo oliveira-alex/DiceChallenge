@@ -10,18 +10,18 @@ import SwiftUI
 struct DiceView: View {
     @Environment(\.colorScheme) var colorScheme
     var systemName: String
-    
+
     var body: some View {
         GeometryReader { geometry in
             let frameWidth = geometry.size.width
             let frameHeight = geometry.size.height
             let smallestLenght = (frameWidth < frameHeight) ? frameWidth : frameHeight
-            
+
             Image(systemName: systemName)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .background(
-                    RoundedRectangle(cornerRadius: smallestLenght/8, style: .continuous)
+                    RoundedRectangle(cornerRadius: smallestLenght / 8, style: .continuous)
                         .fill((colorScheme == .light) ? .white : .black)
                         .padding(10)
                 )

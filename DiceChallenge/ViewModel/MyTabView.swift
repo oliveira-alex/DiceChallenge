@@ -14,7 +14,7 @@ struct MyTabView: View {
     @Binding var selectedTab: String
     @Binding var isShowingFullTabView: Bool
     @Binding var pageTabViewIndexDisplayMode: PageTabViewStyle.IndexDisplayMode
-    
+
     var body: some View {
         if isShowingFullTabView {
             VStack {
@@ -24,22 +24,19 @@ struct MyTabView: View {
                             Image(systemName: "gear")
                         }
                         .tag("Settings")
-                
+
                     DicesView(selectedTab: $selectedTab)
                         .tabItem {
                             Image(systemName: "dice.fill")
                         }
                         .tag("Dices")
-                
+
                     ResultsView(selectedTab: $selectedTab)
                         .tabItem {
                             Image(systemName: "list.bullet.rectangle.portrait")
                         }
                         .tag("Results")
                 }
-                .environmentObject(dices)
-                .environmentObject(results)
-                .environmentObject(settings)
                 .tabViewStyle(.page(indexDisplayMode: pageTabViewIndexDisplayMode))
                 #if os(iOS)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -58,7 +55,7 @@ struct MyTabView: View {
                             }
                             .tag("Settings")
                     }
-                    
+
                     if selectedTab == "Dices" {
                         DicesView(selectedTab: $selectedTab)
                             .tabItem {
@@ -66,7 +63,7 @@ struct MyTabView: View {
                             }
                             .tag("Dices")
                     }
-                    
+
                     if selectedTab == "Results" {
                         ResultsView(selectedTab: $selectedTab)
                             .tabItem {
@@ -75,9 +72,6 @@ struct MyTabView: View {
                             .tag("Results")
                     }
                 }
-                .environmentObject(dices)
-                .environmentObject(results)
-                .environmentObject(settings)
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .onAppear {
                     #if os(iOS)
@@ -85,14 +79,17 @@ struct MyTabView: View {
                     #endif
                 }
             }
-
         }
     }
 }
 
 struct MyTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MyTabView(selectedTab: .constant("Dices"), isShowingFullTabView: .constant(false), pageTabViewIndexDisplayMode: .constant(.always))
+        MyTabView(
+            selectedTab: .constant("Dices"),
+            isShowingFullTabView: .constant(false),
+            pageTabViewIndexDisplayMode: .constant(.always)
+        )
             .environmentObject(Dices.example)
             .environmentObject(Results.example)
             .environmentObject(Settings())

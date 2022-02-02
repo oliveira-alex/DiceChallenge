@@ -12,28 +12,30 @@ struct ContentView: View {
     var results = Results()
     var dices = Dices()
     var settings = Settings()
-    
+
     @State private var isShowingFullTabView = true
     @State private var selectedTab = "Dices"
     @State var pageTabViewIndexDisplayMode: PageTabViewStyle.IndexDisplayMode = .always
-    
+
     var body: some View {
         GeometryReader { geometry in
-            MyTabView(selectedTab: $selectedTab,
-                      isShowingFullTabView: $isShowingFullTabView,
-                      pageTabViewIndexDisplayMode: $pageTabViewIndexDisplayMode)
+            MyTabView(
+                selectedTab: $selectedTab,
+                isShowingFullTabView: $isShowingFullTabView,
+                pageTabViewIndexDisplayMode: $pageTabViewIndexDisplayMode
+            )
                 .onChange(of: geometry.size.width) { _ in
                     isShowingFullTabView = false
                     withAnimation { pageTabViewIndexDisplayMode = .never }
                     var delayToReappear: Double = 0
-                    
+
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.001) {
                         isShowingFullTabView = true
-                        
+
                         #if targetEnvironment(macCatalyst)
-                            delayToReappear = 0.7
+                        delayToReappear = 0.7
                         #endif
-                        
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + delayToReappear) {
                             withAnimation { pageTabViewIndexDisplayMode = .always }
                         }

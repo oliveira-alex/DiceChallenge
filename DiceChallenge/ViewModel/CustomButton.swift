@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomToolbarButton: View {
     var title: LocalizedStringKey
     var action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Text(title)

@@ -12,7 +12,7 @@ struct ResultsView: View {
     @EnvironmentObject var results: Results
     @State private var isShowingAlert = false
     @Binding var selectedTab: String
-    
+
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
@@ -24,9 +24,9 @@ struct ResultsView: View {
                     #endif
                     .fontWeight(.bold)
                     .padding(.bottom)
-                
+
                 Spacer()
-                
+
                 #if !os(watchOS)
                 CustomToolbarButton(title: "Clear") {
                     isShowingAlert.toggle()
@@ -37,13 +37,15 @@ struct ResultsView: View {
             #if !os(watchOS)
             .padding(.top, 50)
             #endif
-            
+
             List(Array(results.all.reversed().enumerated()), id: \.offset) { resultIndex, result in
                 HStack {
                     Text(String(localized: "\(results.count - resultIndex). ", comment: "No translation required"))
                         .frame(width: 26, alignment: .leading)
-                    
-                    ForEach(Array(result.faceUpImageSFSymbolNames.enumerated()), id: \.offset) { diceIndex, faceUpImageSFSymbolName in
+
+                    ForEach(
+                        Array(result.faceUpImageSFSymbolNames.enumerated()),
+                        id: \.offset) { diceIndex, faceUpImageSFSymbolName in
                         if diceIndex != 0 { Text(String(localized: "+", comment: "No translation required")) }
                         Image(systemName: faceUpImageSFSymbolName)
                     }
@@ -51,10 +53,10 @@ struct ResultsView: View {
                     Text(String(localized: "= \(result.total)", comment: "No translation required"))
                     #endif
                     Spacer()
-                    
+
                     VStack(spacing: 0) {
                         Image(systemName: result.maxFaceValueSFSymbolName)
-                        
+
                         Text("max")
                             .font(.system(size: 8))
                     }
@@ -68,7 +70,7 @@ struct ResultsView: View {
             )
             .alert("Clear History", isPresented: $isShowingAlert) {
                 Button("Cancel", role: .cancel) { }
-                
+
                 Button("Clear", role: .destructive) {
                     results.removeAll()
                     dices.resetAll()
@@ -80,7 +82,7 @@ struct ResultsView: View {
             .onTapGesture {
                 isShowingAlert.toggle()
             }
-            
+
             #if !os(watchOS)
             Spacer(minLength: 60)
             #endif
@@ -96,7 +98,7 @@ struct ResultsView_Previews: PreviewProvider {
             .environmentObject(Results.example)
             .environment(\.locale, .init(identifier: "pt-BR"))
 //            .preferredColorScheme(.dark)
-        
+
 //        SettingsView()
 //            .environmentObject(Dices.example)
 //            .environmentObject(Settings())

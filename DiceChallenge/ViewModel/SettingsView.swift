@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var dices: Dices
     @EnvironmentObject var settings: Settings
-    
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -22,19 +22,19 @@ struct SettingsView: View {
                     #endif
                     .fontWeight(.bold)
                     .padding(.bottom)
-                    
+
                 Spacer()
             }
             #if !os(watchOS)
             .padding(.top, 50)
             #endif
-            
+
             VStack(spacing: 10) {
                 #if !os(watchOS)
                 HStack {
                     Text("Quantity")
                         .foregroundColor(.gray)
-                    
+
                     Spacer()
                 }
 
@@ -54,15 +54,15 @@ struct SettingsView: View {
                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                         .fill(Color.gray.opacity(0.2))
                 )
-                
+
                 Spacer()
                     .frame(height: 15)
                 #endif
-                
+
                 HStack {
                     Text("Type")
                         .foregroundColor(.gray)
-                    
+
                     Spacer()
                 }
                 Picker("Number of dice faces", selection: $settings.numberOfDiceFaces) {
@@ -87,7 +87,7 @@ struct SettingsView: View {
 
             Spacer()
         }
-        .padding([.horizontal,.bottom])
+        .padding([.horizontal, .bottom])
         .onAppear {
             settings.numberOfDices = dices.count
             settings.numberOfDiceFaces = dices.numberOfFaces
@@ -100,7 +100,7 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
             .environmentObject(Dices.example)
             .environmentObject(Settings())
-        
+
         SettingsView()
             .environmentObject(Dices.example)
             .environmentObject(Settings())
